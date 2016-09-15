@@ -16,12 +16,14 @@
 	<script type="text/javascript">
 		function ikusBalioak(){
 			var sAux="";
+			var arg=document.getElementById("argazkia").value;
 			var frm=document.getElementById("erregistro");
 			for(i=1;i<frm.elements.length;i++){
 				sAux +="IZENA: " + frm.elements[i].name+"";
 				sAux +="BALIOA: " + frm.elements[i].value+"\n";
 			}
 			alert(sAux);
+			alert(arg);
 		}
 	</script>
   </head>
@@ -48,6 +50,7 @@
 			Telefono zenbakia(*):  <input type="number" id="telefonoa" name="telefonoa" /><br />
 			Espezialitatea(*) (adibidez, Software Ingeniaritza): <input type="text" id="espezialitatea" name="espezialitatea" /><br />
 			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak" /><br />
+			Argazkia: <input type="file" name="argazkia" />
 			<br />
 			<input type="submit" value="Ados" />	
 		</form>
