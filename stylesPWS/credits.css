@@ -21,6 +21,8 @@ body {
 
 #s1 {	
 	background-image: url("http://66.media.tumblr.com/tumblr_lrbu1l9BJk1qgzxcao1_250.gif");
+	background-repeat: repeat-x;
+	background-size: contain;
 	font: 20px "Comic Sans MS";
 	font-weight: bolder;
 	color: #FFF000;
@@ -29,6 +31,7 @@ body {
 
 div > p {
 	background-color: #FE0FEA;
+	opacity: 0.8;
 	margin: 5px;
 }
 
