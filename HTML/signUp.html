@@ -11,8 +11,8 @@
 	<link rel='stylesheet' 
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
-		   href='../CSS/smartphone.css' />		   
-	<script type="text/javascript" src="../JavaScript/signUp.js"></script>
+		   href='../CSS/smartphone.css' />
+	<script src="../JavaScript/signUp.js"></script> <!--<script></script> horrela jartzea beharrezkoa da-->
   </head>
   <body>
   <div id='page-wrap'>
@@ -27,10 +27,9 @@
 		<span><a href='credits.html'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
-    
 	
 	<div>
-		<form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" style="text-align:left;" >
+		<form id="erregistro" name="erregistro" onSubmit="checkNagusia()" style="text-align:left;" >
 			Izena (*): <input type="text" id="deitura" name="deitura" /><br />
 			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta" /><br />
 			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" /><br />
