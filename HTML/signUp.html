@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
+	<title>Sign Up</title>
+    <link rel='stylesheet' type='text/css' href='../stylesPWS/style.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+		   href='../stylesPWS/wide.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (max-width: 480px)'
+		   href='../stylesPWS/smartphone.css' />
+		   
+	<script type="text/javascript">
+		function ikusBalioak(){
+			var sAux="";
+			var balioDu=TRUE;
+			var arg=document.getElementById("argazkia");
+			var frm=document.getElementById("erregistro");
+			for(i=1;i<frm.elements.length;i++){
+				//sAux +="IZENA: " + frm.elements[i].name+" - ";
+				//sAux +="BALIOA: " + frm.elements[i].value+"\n";
+				if(frm.elements[i].value!=NULL){
+					if(frm.elements[i].name=="pasahitza" && frm.elements[i].value.length<6){
+						sAux+="Psahitza 6 karaktere edo gehiagoko luzeera izan behar du.\n";
+						balioDu=FALSE;
+					}
+					if(frm.elements[i].name=="eposta" && 
+						(frm.elements[i].value.indexOf("([A-Z]*[a-z]*)+[0-9][0-9][0-9]@ikasle.ehu.e(u)s")==-1) ){
+						sAux+="Psahitza 6 karaktere edo gehiagoko luzeera izan behar du.\n";
+						balioDu=FALSE;
+					}
+				}
+				else { balioDu=FALSE }
+				if(!balioDu){break;}
+			}
+			alert(sAux);
+			alert(arg);
+		}
+		
+		function espezBesteakBistaratu(){ document.getElementById("espez_besteak").style.visibility = "visible"; }
+		function espezBesteakEzkutatu(){ document.getElementById("espez_besteak").style.visibility = "hidden"; }
+		
+	</script>
+  </head>
+  <body>
+  <div id='page-wrap'>
+	<header class='main' id='h1'>
+      <span class="right"><a href="signUp.html">Sign Up</a> </span>
+      <span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
+	<h2>Sign Up</h2>
+    </header>
+	<nav class='main' id='n1' role='navigation'>
+		<span><a href='../layout.html'>Home</a></span>
+		<span><a href='../quizzes/questions.html'>Quizzes</a></span>
+		<span><a href='../author/credits.html'>Credits</a></span>
+	</nav>
+    <section class="main" id="s1">
+    
+	
+	<div>
+		<form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" style="text-align:left;" >
+			Izena (*): <input type="text" id="deitura" name="deitura" /><br />
+			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta" /><br />
+			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" /><br />
+			Telefono zenbakia(*):  <input type="text" id="telefonoa" name="telefonoa" /><br />
+			Espezialitatea(*): 
+				<select id="espezialitatea" name="espezialitatea">
+					<option onClick="espezBesteakEzkutatu()">Software ingeniaritza</option>
+					<option onClick="espezBesteakEzkutatu()">Konputagailuen ingeniaritza</option>
+					<option onClick="espezBesteakEzkutatu()">Konputazioa</option>
+					<option onClick="espezBesteakBistaratu()">Besteak</option>
+				</select><br />
+			<input type="text" name="espez_besteak" style="visibility: hidden;" /><br />
+			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak" /><br />
+			Argazkia: <input type="file" name="argazkia" />
+			<br />
+			<input type="submit" value="Ados" />	
+		</form>
+	</div>
+    </section>
+	<footer class='main' id='f1'>
+		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
+		<a href='https://github.com'>Link GITHUB</a>
+	</footer>
+</div>
+</body>
+</html>
