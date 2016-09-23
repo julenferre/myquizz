@@ -32,6 +32,10 @@ function checkNagusia() {
                     sAuxErr += "Telefonoa 9 zenbakiz osatuta egon behar da.\n";
                     balioDu = false;
                 }
+            }			
+			if (frm.elements[i].name == "espezialitatea") {
+                if(telefonoaCheck()==false){
+                }
             }
         }
         if (balioDu==false) {
@@ -46,39 +50,35 @@ function ikusBalioak() {
     var balioDu = true;
     var frm = document.getElementById("erregistro");
     for (i = 0; i < frm.elements.length - 1; i++) {
-        sAux += "IZENA: " + frm.elements[i].name + " - ";
+        sAux += "IZENA: " + frm.elements[i].name + " \t ";
         sAux += "BALIOA: " + frm.elements[i].value + "\n";
     }
     alert(sAux);
 }
 function deituraCheck() {
     var de = document.getElementById("deitura").value;
-    var deitRE = /[A-Za-z]{3}/;
+    var deitRE = /\w{3}/;
     return deitRE.test(de);
 }
 function emailaCheck() {
     var em = document.getElementById("eposta").value;
-    var emailRE = /[a-zA-z]+[0-9]{3}@ikasle.ehu.e(u)s/;
+    var emailRE = /[a-zA-z]+[0-9]{3}(@ikasle.ehu.e)u?(s)/;
     return emailRE.test(em);
 }
 function pasahitzaCheck() {
     var pa = document.getElementById("pasahitza").value;
-    if (pa.value.length < 6) {
-        return false;
-    }
-    return true;
+	return pa.length >= 6;
 }
 function telefonoaCheck() {
-    var tl = document.getElementById("telefonoa").value;
-    if (tl.length != 9) {
-        return false;
-    }
-    var tlfRE = / {9} /;
-    return tlfRE.test(tl);
+    var tl = document.getElementById("telefonoa").value;	
+    var tlfRE = /^[0-8]{1,10}$/;
+	return (tl.length == 9 && tlfRE.test(tl));
 }
-function espezBesteakBistaratu() {
-    document.getElementById("espez_besteak").style.visibility = "visible";
-}
-function espezBesteakEzkutatu() {
-    document.getElementById("espez_besteak").style.visibility = "hidden";
+function espezBesteakIkusi() {
+	if(document.getElementById("espezialitatea").value=="Besteak"){
+		document.getElementById("espez_besteak").style.visibility = "visible";
+	}
+	else {
+		document.getElementById("espez_besteak").style.visibility = "hidden";
+	}
 }

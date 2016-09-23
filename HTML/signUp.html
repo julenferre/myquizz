@@ -33,19 +33,19 @@
 			Izena (*): <input type="text" id="deitura" name="deitura" /><br />
 			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta" /><br />
 			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" /><br />
-			Telefono zenbakia(*):  <input type="text" id="telefonoa" name="telefonoa" /><br />
+			Telefono zenbakia(*):  <input type="text" id="telefonoa" name="telefonoa" maxlength="9" size="9" /><br />
 			Espezialitatea(*): 
-				<select id="espezialitatea" name="espezialitatea">
-					<option onClick="espezBesteakEzkutatu()">Software ingeniaritza</option>
-					<option onClick="espezBesteakEzkutatu()">Konputagailuen ingeniaritza</option>
-					<option onClick="espezBesteakEzkutatu()">Konputazioa</option>
-					<option onClick="espezBesteakBistaratu()">Besteak</option>
+				<select id="espezialitatea" name="espezialitatea" onClick="espezBesteakIkusi()">
+					<option>Software ingeniaritza</option>
+					<option>Konputagailuen ingeniaritza</option>
+					<option>Konputazioa</option>
+					<option>Besteak</option>
 				</select><br />
-			<input type="text" name="espez_besteak" style="visibility: hidden;" /><br />
+			<input type="text" id="espez_besteak" name="espez_besteak" style="visibility: hidden" /><br />
 			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak" /><br />
 			Argazkia: <input type="file" name="argazkia" />
 			<br />
-			<input type="submit" value="Ados" />	
+			<input type="submit" value="Ados" />
 		</form>
 	</div>
     </section>
