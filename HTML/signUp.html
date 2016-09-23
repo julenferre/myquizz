@@ -29,7 +29,7 @@
     <section class="main" id="s1">
 	
 	<div>
-		<form id="erregistro" name="erregistro" onSubmit="checkNagusia()" style="text-align:left;" >
+		<form id="erregistro" name="erregistro" style="text-align:left;" >
 			Izena (*): <input type="text" id="deitura" name="deitura" /><br />
 			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta" /><br />
 			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" /><br />
@@ -41,11 +41,11 @@
 					<option>Konputazioa</option>
 					<option>Besteak</option>
 				</select><br />
-			<input type="text" id="espez_besteak" name="espez_besteak" style="visibility: hidden" /><br />
+			<input type="text" id="espez_besteak" name="espez_besteak" style="display: none" value="Idatzi hemen zure espezialitatea" size="50" />
 			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak" /><br />
 			Argazkia: <input type="file" name="argazkia" />
 			<br />
-			<input type="submit" value="Ados" />
+			<input type="button" value="Ados" onClick="checkNagusia()" />
 		</form>
 	</div>
     </section>

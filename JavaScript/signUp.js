@@ -24,6 +24,7 @@ function checkNagusia() {
             if (frm.elements[i].name == "pasahitza") {
                 if(pasahitzaCheck()==false){
                     sAuxErr += "Pasahitza 6 karaktere edo gehiagoko luzeera izan behar du.\n";
+					frm.elements[i].value = "";
                     balioDu = false;
                 }
             }
@@ -31,10 +32,6 @@ function checkNagusia() {
                 if(telefonoaCheck()==false){
                     sAuxErr += "Telefonoa 9 zenbakiz osatuta egon behar da.\n";
                     balioDu = false;
-                }
-            }			
-			if (frm.elements[i].name == "espezialitatea") {
-                if(telefonoaCheck()==false){
                 }
             }
         }
@@ -76,9 +73,9 @@ function telefonoaCheck() {
 }
 function espezBesteakIkusi() {
 	if(document.getElementById("espezialitatea").value=="Besteak"){
-		document.getElementById("espez_besteak").style.visibility = "visible";
+		document.getElementById("espez_besteak").style.display = "block";
 	}
 	else {
-		document.getElementById("espez_besteak").style.visibility = "hidden";
+		document.getElementById("espez_besteak").style.display = "none";
 	}
 }
