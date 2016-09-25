@@ -55,7 +55,7 @@ function deituraCheck() {
     var de = document.getElementById("deitura").value;
 <<<<<<< HEAD
     //var deitRE = /\w{3}/;
-	var deitRE = /([A-Za-z\s]+)()([A-Za-z\s]+)([A-Za-z]\s+)/;
+	//var deitRE = /([A-Za-z\s]+)()([A-Za-z\s]+)([A-Za-z]\s+)/;
 =======
     var deitRE = /(\w+\s)(\w+\s)(\w+)/;
 >>>>>>> 8cfed32c5e3892e392c54f5320037807c4df3644
