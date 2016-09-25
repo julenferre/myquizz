@@ -30,29 +30,29 @@
 	
 	<div>
 		<form id="erregistro" name="erregistro" style="text-align:left;" >
-			Izena (*): <input type="text" id="deitura" name="deitura" /><br />
-			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta" /><br />
-			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" /><br />
-			Telefono zenbakia(*):  <input type="text" id="telefonoa" name="telefonoa" maxlength="9" size="9" /><br />
+			Izena (*): <input type="text" id="deitura" name="deitura"><br />
+			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta"><br />
+			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza"><br />
+			Telefono zenbakia(*):  <input type="text" id="telefonoa" name="telefonoa" maxlength="9" size="9"><br />
 			Espezialitatea(*): 
-				<select id="espezialitatea" name="espezialitatea" onClick="espezBesteakIkusi()">
+				<select id="espezialitatea" name="espezialitatea" onChange="espezBesteakIkusi()">
 					<option>Software ingeniaritza</option>
 					<option>Konputagailuen ingeniaritza</option>
 					<option>Konputazioa</option>
 					<option>Besteak</option>
-				</select><br />
-			<input type="text" id="espez_besteak" name="espez_besteak" style="display: none" value="Idatzi hemen zure espezialitatea" size="50" />
-			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak" /><br />
-			Argazkia: <input type="file" name="argazkia" />
-			<br />
+				</select>
+			<input type="text" id="espez_besteak" name="espez_besteak" style="display: none" value="Idatzi hemen zure espezialitatea" size="50"><br />
+			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak"><br />
+			Argazkia: <input type="file" name="argazkia">
+			<br/>
 			<input type="button" value="Ados" onClick="checkNagusia()" />
 		</form>
 	</div>
     </section>
 	<footer class='main' id='f1'>
 		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
-		<a href='https://github.com'>Link GITHUB</a>
+		<a href='https://github.com/julenferre/myquizz'>Link GITHUB</a>
 	</footer>
-</div>
-</body>
+  </div>
+  </body>
 </html>
