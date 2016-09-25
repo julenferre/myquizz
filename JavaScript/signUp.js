@@ -8,8 +8,7 @@ function checkNagusia() {
             balioDu = false;
         }
         else{
-            if (frm.elements[i].name == "deitura")
-            {
+            if (frm.elements[i].name == "deitura"){
                 if (deituraCheck()==false) {
                     sAuxErr += "Deituraren formatua okerra da.\n";
                     balioDu = false;
@@ -54,7 +53,7 @@ function ikusBalioak() {
 }
 function deituraCheck() {
     var de = document.getElementById("deitura").value;
-    var deitRE = /\w{3}/;
+    var deitRE = /(\w+\s)(\w+\s)(\w+)/;
     return deitRE.test(de);
 }
 function emailaCheck() {
@@ -73,7 +72,7 @@ function telefonoaCheck() {
 }
 function espezBesteakIkusi() {
 	if(document.getElementById("espezialitatea").value=="Besteak"){
-		document.getElementById("espez_besteak").style.display = "block";
+		document.getElementById("espez_besteak").style.display = "inline";
 	}
 	else {
 		document.getElementById("espez_besteak").style.display = "none";
