@@ -54,7 +54,8 @@ function ikusBalioak() {
 }
 function deituraCheck() {
     var de = document.getElementById("deitura").value;
-    var deitRE = /\w{3}/;
+    //var deitRE = /\w{3}/;
+	var deitRE = /([A-Za-z\s]+)()([A-Za-z\s]+)([A-Za-z]\s+)/;
     return deitRE.test(de);
 }
 function emailaCheck() {
@@ -68,7 +69,8 @@ function pasahitzaCheck() {
 }
 function telefonoaCheck() {
     var tl = document.getElementById("telefonoa").value;	
-    var tlfRE = /^[0-8]{1,10}$/;
+    //var tlfRE = /^[0-8]{1,10}$/;
+	var tlfRE = /[0-9]{9}$/;
 	return (tl.length == 9 && tlfRE.test(tl));
 }
 function espezBesteakIkusi() {
