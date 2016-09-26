@@ -38,7 +38,10 @@ function checkNagusia() {
             break;
         }
     }
-    if(balioDu==true) { ikusBalioak(); }
+    if(balioDu==true) {
+		argazkiaIgo();
+		ikusBalioak(); 
+	}
     else { alert(sAuxErr); }
 }
 function ikusBalioak() {
@@ -53,12 +56,7 @@ function ikusBalioak() {
 }
 function deituraCheck() {
     var de = document.getElementById("deitura").value;
-<<<<<<< HEAD
-    //var deitRE = /\w{3}/;
-	//var deitRE = /([A-Za-z\s]+)()([A-Za-z\s]+)([A-Za-z]\s+)/;
-=======
     var deitRE = /(\w+\s)(\w+\s)(\w+)/;
->>>>>>> 8cfed32c5e3892e392c54f5320037807c4df3644
     return deitRE.test(de);
 }
 function emailaCheck() {
@@ -72,7 +70,6 @@ function pasahitzaCheck() {
 }
 function telefonoaCheck() {
     var tl = document.getElementById("telefonoa").value;	
-    //var tlfRE = /^[0-8]{1,10}$/;
 	var tlfRE = /[0-9]{9}$/;
 	return (tl.length == 9 && tlfRE.test(tl));
 }
@@ -83,4 +80,11 @@ function espezBesteakIkusi() {
 	else {
 		document.getElementById("espez_besteak").style.display = "none";
 	}
+}
+
+function argazkiaIgo() {
+	alert("Aurretik");
+	$.get("../PHP/upload.php");
+	alert("Ondoren");
+	return false;
 }
