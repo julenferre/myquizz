@@ -1,4 +1,5 @@
 <?php
+	echo "PHP-an zaude";
     $target_dir = "Uploads/";
     $target_file = $target_dir . basename($_FILES["argazkia"]["name"]);
     $uploadOk = 1;

@@ -83,8 +83,8 @@ function espezBesteakIkusi() {
 }
 
 function argazkiaIgo() {
-	alert("Aurretik");
-	$.get("../PHP/upload.php");
+	var orriIzena = window.location.href.substr(0, location.href.lastIndexOf("/") - 4); // - HTML
+	$.get("http://localhost:1234/myquizz/PHP/upload.php");
 	alert("Ondoren");
 	return false;
 }
