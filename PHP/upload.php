@@ -17,7 +17,7 @@
     }
     // Check if file already exists
     if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
+        echo "Jada existitzen da izen berdina duen irudi bat. Nahi baduzu, irudia izenez aldatu.";
         $uploadOk = 0;
     }
 
