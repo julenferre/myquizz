@@ -13,6 +13,7 @@
 		   media='only screen and (max-width: 480px)'
 		   href='../CSS/smartphone.css' />
 	<script src="../JavaScript/signUp.js"></script> <!--<script></script> horrela jartzea beharrezkoa da-->
+	<script src="../JavaScript/irudiaKargatu.js"></script> 
   </head>
   <body>
   <div id='page-wrap'>
@@ -43,8 +44,10 @@
 				</select>
 			<input type="text" id="espez_besteak" name="espez_besteak" style="display: none" value="Idatzi hemen zure espezialitatea" size="50"><br />
 			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak"><br />
-			Argazkia: <input type="file" name="argazkia">
-			<br/>
+			Argazkia: <input type="file" name="argazkia" onchange="
+															document.getElementById('argazkiAurrekarga').style.display = 'inline';
+															document.getElementById('argazkiAurrekarga').src = window.URL.createObjectURL(this.files[0]);"> <br/>
+			<img id="argazkiAurrekarga" alt="Argazkia" style="display: none" width="125" height="125"/><br/>
 			<input type="button" value="Ados" onclick="checkNagusia()" />
 		</form>
 	</div>

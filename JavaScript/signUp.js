@@ -39,7 +39,7 @@ function checkNagusia() {
         }
     }
     if(balioDu==true) {
-		argazkiaIgo();
+		//argazkiaIgo();
 		ikusBalioak(); 
 	}
     else { alert(sAuxErr); }
@@ -82,9 +82,9 @@ function espezBesteakIkusi() {
 	}
 }
 
-function argazkiaIgo() {
+/*function argazkiaIgo() {
 	var orriIzena = window.location.href.substr(0, location.href.lastIndexOf("/") - 4); // - HTML
 	$.get("http://localhost:1234/myquizz/PHP/upload.php");
 	alert("Ondoren");
 	return false;
-}
+}*/
