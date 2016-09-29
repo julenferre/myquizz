@@ -7,8 +7,8 @@
 	$conn = new mysqli($servername, $username, $password, $ddbb);
 	
 	//Konexioa konprobatu
-	if($conn -> connect_error){
-		die("Ezin izan da datubasearekin konexio bat ezartzea: " . $conn -> connect_error);
+	if (!$conn) {
+		die("Ezin izan da konexioa ezarri: " . mysqli_connect_error());
 	}
 	
 	// Datuak bidali
@@ -23,5 +23,22 @@
 	}
 	$interesak = $_POST['tresnak'];
 	
-	$kontsulta = "INSERT INTO Erabiltzaileak VALUES "
+	$query = "INSERT INTO Erabiltzaileak "
+			+"VALUES ("$izena+", "
+					  +$abizenak+", "
+					  +$eposta+", "
+					  +$pasahitza+", "
+					  +$telefonoa+", "
+					  +$espezialitatea+", "
+					  +$interesak+", "
+					  +"NULL)";
+		
+	if(mysqli_query($conn, $query){
+		echo "Datuak ondo sartu dira <br><a href='showUsers.php'> Datuak ikusi </a>";
+	}
+	else{
+		echo "Datuak ez dira sartu: " . $query . "<br>" . mysqli_error($conn);
+	}
+	
+	mysqli_close($conn);
 ?>

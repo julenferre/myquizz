@@ -46,7 +46,7 @@ function checkNagusia() {
     }
     if(balioDu==true) {
 		//argazkiaIgo();
-		ikusBalioak();
+		//ikusBalioak();
 		return true;
 	}
     else { 
