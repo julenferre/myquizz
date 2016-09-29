@@ -8,9 +8,15 @@ function checkNagusia() {
             balioDu = false;
         }
         else{
-            if (frm.elements[i].name == "deitura"){
-                if (deituraCheck()==false) {
-                    sAuxErr += "Deituraren formatua okerra da.\n";
+            if (frm.elements[i].name == "izena"){
+                if (izenaCheck()==false) {
+                    sAuxErr += "Izenaren formatua okerra da.\n";
+                    balioDu = false;
+                }
+            }
+			if (frm.elements[i].name == "abizenak"){
+                if (abizenakCheck()==false) {
+                    sAuxErr += "Abizenen formatua okerra da.\n";
                     balioDu = false;
                 }
             }
@@ -40,9 +46,14 @@ function checkNagusia() {
     }
     if(balioDu==true) {
 		//argazkiaIgo();
-		ikusBalioak(); 
+		ikusBalioak();
+		return true;
 	}
-    else { alert(sAuxErr); }
+    else { 
+		alert(sAuxErr);
+		return false;
+	}
+	//return balioDu;
 }
 function ikusBalioak() {
     var sAux = "";
@@ -54,9 +65,14 @@ function ikusBalioak() {
     }
     alert(sAux);
 }
-function deituraCheck() {
-    var de = document.getElementById("deitura").value;
-    var deitRE = /(\w+\s)(\w+\s)(\w+)/;
+function izenaCheck() {
+    var de = document.getElementById("izena").value;
+    var deitRE = /([A-Z][a-z]+)(\s[A-Z][a-z]+)*/;
+    return deitRE.test(de);
+}
+function abizenakCheck() {
+    var de = document.getElementById("abizenak").value;
+    var deitRE = /([A-Z][a-z]+\s[A-Z][a-z]+)(\s[A-Z][a-z]+)*/;
     return deitRE.test(de);
 }
 function emailaCheck() {
