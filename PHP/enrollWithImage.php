@@ -11,8 +11,8 @@
 	$passH = "adminroot";
 	$ddbbH = "u823979798_quiz";
 	
-	//$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
-	$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
+	$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
+	//$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
 	
 	//Konexioa konprobatu
 	if (!$conn) {
@@ -30,8 +30,9 @@
 		$espezialitatea = $_POST['espez_besteak'];
 	}
 	$interesak = $_POST['tresnak'];
+	$argazkia = $_FILES["argazkia"]["name"];
 	
-	$query = "INSERT INTO Erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', $telefonoa, '$espezialitatea', '$interesak', '');";
+	$query = "INSERT INTO Erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', $telefonoa, '$espezialitatea', '$interesak', '$argazkia');";
 				
 	//echo("Query-a: $query <br>");
 	
