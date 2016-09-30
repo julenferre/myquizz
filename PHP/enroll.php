@@ -23,7 +23,7 @@
 	}
 	$interesak = $_POST['tresnak'];
 	
-	$query = "INSERT INTO Erabiltzailea VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', $telefonoa, '$espezialitatea', '$interesak', '');";
+	$query = "INSERT INTO Erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', $telefonoa, '$espezialitatea', '$interesak', '');";
 				
 	//echo("Query-a: $query <br>");
 	

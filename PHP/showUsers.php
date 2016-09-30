@@ -15,7 +15,7 @@
 	}
 	
 	// Datuak jaso
-	$query = "SELECT * FROM Erabiltzailea ";
+	$query = "SELECT * FROM Erabiltzaile ";
 		
 	$erantzuna = mysqli_query($conn, $query);
 	
