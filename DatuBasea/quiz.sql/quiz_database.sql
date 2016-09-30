@@ -1,3 +1,0 @@
---
--- Base de datos: `quiz`
---
