@@ -38,7 +38,7 @@
 	}
 	
 	//Emaila balidatzen da
-	$epostaCheck="/[a-zA-z]+[0-9]{3}(@ikasle.ehu.e)u?(s)/";   
+	$epostaCheck="/[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)/";   
 
 	if(!isset($eposta) || empty($eposta) || !preg_match($epostaCheck,$eposta)) {   
 		echo "Emailaren formatua okerra da <br>";

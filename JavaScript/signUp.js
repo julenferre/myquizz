@@ -76,9 +76,9 @@ function abizenakCheck() {
     return deitRE.test(de);
 }
 function emailaCheck() {
-    /*var em = document.getElementById("eposta").value;
-    var emailRE = /[a-zA-z]+[0-9]{3}(@ikasle.ehu.e)u?(s)/;
-    return emailRE.test(em);*/
+    var em = document.getElementById("eposta").value;
+    var emailRE = /[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)/;
+    return emailRE.test(em);
 	return true;
 }
 function pasahitzaCheck() {
