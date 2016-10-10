@@ -30,18 +30,31 @@
 		$espezialitatea = $_POST['espez_besteak'];
 	}
 	$interesak = $_POST['tresnak'];
-	$argazkia = addslashes(file_get_contents($_FILES['argazkia']['tmp_name']));
-	
-	$query = "INSERT INTO Erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', $telefonoa, '$espezialitatea', '$interesak', '$argazkia');";
-				
-	//echo("Query-a: $query <br>");
-	
-	if($conn->query($query) === TRUE) {
-		echo "<h2>Datuak ondo sartu dira</h2> <br><a href='showUsersWithImage.php'> Datuak ikusi </a>";
+	if($_FILES['argazkia']['tmp_name'] !== ""){
+		$argazkia = addslashes(file_get_contents($_FILES['argazkia']['tmp_name']));
 	}
-	else{
-		echo "<h2>Datuak ez dira sartu: " . $query . "</h2><br>" . $conn->error;
+	else {
+		$argazkia = NULL;
 	}
 	
-	$conn->close();
+	//Emaila balidatzen da
+	$epostaCheck="/[a-zA-z]+[0-9]{3}(@ikasle.ehu.e)u?(s)/";   
+
+	if(!isset($eposta) || empty($eposta) || !preg_match($epostaCheck,$eposta)) {   
+		echo "Emailaren formatua okerra da <br>";
+	}
+	else {		
+		$query = "INSERT INTO Erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', $telefonoa, '$espezialitatea', '$interesak', '$argazkia');";
+	
+		//echo("Query-a: $query <br>");
+		
+		if($conn->query($query) === TRUE) {
+			echo "<h2>Datuak ondo sartu dira</h2> <br><a href='showUsersWithImage.php'> Datuak ikusi </a>";
+		}
+		else{
+			echo "<h2>Datuak ez dira sartu: " . $query . "</h2><br>" . $conn->error;
+		}
+	}	
+	
+	$conn->close();	
 ?>
