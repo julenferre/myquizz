@@ -12,54 +12,63 @@
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
 		   href='../CSS/smartphone.css' />
-		   
-	<script type="text/javascript">
-		function ikusBalioak(){
-			var sAux="";
-			var arg=document.getElementById("argazkia");
-			var frm=document.getElementById("erregistro");
-			for(i=1;i<frm.elements.length;i++){
-				sAux +="IZENA: " + frm.elements[i].name+" - ";
-				sAux +="BALIOA: " + frm.elements[i].value+"\n";
+	<script>
+		function espezBesteakIkusi() {
+			if(document.getElementById("espezialitatea").value=="Besteak"){
+				document.getElementById("espez_besteak").style.display = "inline";
 			}
-			alert(sAux);
-			alert(arg);
-		}
+			else {
+				document.getElementById("espez_besteak").style.display = "none";
+			}
+	}
 	</script>
-  </head>
-  <body>
-  <div id='page-wrap'>
-	<header class='main' id='h1'>
-      <span class="right"><a href="signUp.html">Sign Up</a> </span>
-      <span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
-	<h2>Sign Up</h2>
-    </header>
-	<nav class='main' id='n1' role='navigation'>
-		<span><a href='layout.html'>Home</a></span>
-		<span><a href='questions.html'>Quizzes</a></span>
-		<span><a href='credits.html'>Credits</a></span>
-	</nav>
-    <section class="main" id="s1">
-    
-	
-	<div>
-		<form id="erregistro" name="erregistro" onSubmit="ikusBalioak()" style="text-align:left;" >
-			Izena (*): <input type="text" id="deitura" name="deitura" /><br />
-			Eposta elektronikoa (*): <input type="email" id="eposta" name="eposta" /><br />
-			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" /><br />
-			Telefono zenbakia(*):  <input type="number" id="telefonoa" name="telefonoa" /><br />
-			Espezialitatea(*) (adibidez, Software Ingeniaritza): <input type="text" id="espezialitatea" name="espezialitatea" /><br />
-			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak" /><br />
-			Argazkia: <input type="file" name="argazkia" />
-			<br />
-			<input type="submit" value="Ados" />	
-		</form>
-	</div>
-    </section>
-	<footer class='main' id='f1'>
-		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
-		<a href='https://github.com/julenferre/myquizz'>Link GITHUB</a>
-	</footer>
-</div>
-</body>
+	</head>
+	<body>
+	  	<div id='page-wrap'>
+			<header class='main' id='h1'>
+		      <span class="right"><a href="signUp.html">Sign Up</a> </span>
+		      <span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
+			<h2>Sign Up</h2>
+		    </header>
+			<nav class='main' id='n1' role='navigation'>
+				<span><a href='layout.html'>Home</a></span>
+				<span><a href='questions.html'>Quizzes</a></span>
+				<span><a href='credits.html'>Credits</a></span>
+			</nav>
+		    <section class="main" id="s1">
+				<div>
+					<form id="erregistro" name="erregistro" style="text-align:left;" method="post">
+						Izena: 
+						<input type="text" id="izena" name="izena" pattern="([A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/><font color="red">*</font> <br/>
+						Abizena: 
+						<input type="text" id="abizenak" name="abizenak" pattern="([A-Z][a-z]+\s[A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/>
+						<font color="red">*</font> <br/>
+						Eposta elektronikoa: 
+						<input type="email" id="eposta" pattern="[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)" name="eposta" required/>
+						<font color="red">*</font><br/>
+						Pasahitza: 
+						<input type="pass" id="pasahitza" name="pasahitza" minlength=6 required/><font color="red">*</font> <br/>
+						Telefono zenbakia:  
+						<input type="text" id="telefonoa" name="telefonoa" pattern="[0-9]*" minlength=9 required/><font color="red">*</font> <br/>
+						Espezialitatea: 
+							<select id="espezialitatea" name="Espezialitatea" class="textuSarrera" onchange="espezBesteakIkusi()">
+					    		<option>Software ingenieritza</option>
+								<option>Konputagailuen ingeniaritza</option>
+								<option>Konputazioa</option>
+								<option>Besteak</option>
+					    	</select> 
+					    <input type="text" id="espez_besteak" name="espez_besteak" style="display: none" value="Idatzi hemen zure espezialitatea" size="50"><font color="red">*</font> <br/>
+						Interesa duzun teknologiak eta erremintak: <br/>
+						<textarea name="tresnak" id="tresnak" style="resize: none; width: 400px;"></textarea><br />
+						Argazkia: <input type="file" name="argazkia" /><br />
+						<input type="submit" value="Ados" />	
+					</form>
+				</div>
+		    </section>
+			<footer class='main' id='f1'>
+				<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
+				<a href='https://github.com/julenferre/myquizz'>Link GITHUB</a>
+			</footer>
+		</div>
+	</body>
 </html>

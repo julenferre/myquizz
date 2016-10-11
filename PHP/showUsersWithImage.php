@@ -14,8 +14,8 @@
 	$passH = "adminroot";
 	$ddbbH = "u823979798_quiz";
 	
-	$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
-	//$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
+	//$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
+	$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
 	
 	//Konexioa konprobatu
 	if (!$conn) {
@@ -29,7 +29,7 @@
 	
 	if ($erantzuna->num_rows > 0) {
 		echo "<table>";
-		echo "<tr><td><b>Izena</b></td><td><b>Abizenak</b></td><td><b>Eposta</b></td><td><b>Pasahitza</b></td><td><b>Telefonoa</b></td><td><b>Espezialitatea</b></td><td><b>Interesak</b></td><td><b>Argazkia<b></td></tr>";
+		echo "<tr><th>Izena</th><th>Abizenak</th><th>Eposta</th><th>Pasahitza</th><th>Telefonoa</th><th>Espezialitatea</th><th>Interesak</th><th>Argazkia</th></tr>";
 		while($lerroa = $erantzuna->fetch_assoc()) {
 			echo "<tr>";
 			echo "<td>" . $lerroa["Izena"] . "</td><td>" . $lerroa["Abizenak"]. "</td><td>" . $lerroa["Eposta"]. "</td><td>" . $lerroa["Pasahitza"]. "</td><td>" . $lerroa["Telefonoa"]. "</td><td>" . $lerroa["Espezialitatea"]. "</td><td>" . $lerroa["Interesak"]. "</td><td><img src='data:Argazkia/jpeg;base64,".base64_encode( $lerroa['Argazkia'] )."' width='100px' /></td>";
