@@ -41,19 +41,12 @@ function checkNagusia() {
             }
         }
         if (balioDu==false) {
+            alert(sAuxErr);
             break;
         }
     }
-    if(balioDu==true) {
-		//argazkiaIgo();
-		//ikusBalioak();
-		return true;
-	}
-    else { 
-		alert(sAuxErr);
-		return false;
-	}
-	//return balioDu;
+	return balioDu;
+    return true;
 }
 function ikusBalioak() {
     var sAux = "";
@@ -98,10 +91,3 @@ function espezBesteakIkusi() {
 		document.getElementById("espez_besteak").style.display = "none";
 	}
 }
-
-/*function argazkiaIgo() {
-	var orriIzena = window.location.href.substr(0, location.href.lastIndexOf("/") - 4); // - HTML
-	$.get("http://localhost:1234/myquizz/PHP/upload.php");
-	alert("Ondoren");
-	return false;
-}*/

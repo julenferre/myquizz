@@ -1,4 +1,6 @@
 <?php
+	include 'baliostapenak.php';
+
 	//LOCALHOST
 	$servername = "localhost:3306";
 	$username = "root";
@@ -11,8 +13,8 @@
 	$passH = "adminroot";
 	$ddbbH = "u823979798_quiz";
 	
-	//$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
-	$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
+	$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
+	//$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
 	
 	//Konexioa konprobatu
 	if (!$conn) {
@@ -37,14 +39,8 @@
 		$argazkia = NULL;
 	}
 	
-	//Emaila balidatzen da
-	$epostaCheck="/[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)/";   
-
-	if(!isset($eposta) || empty($eposta) || !preg_match($epostaCheck,$eposta)) {   
-		echo "Emailaren formatua okerra da <br>";
-	}
-	else {		
-		$query = "INSERT INTO Erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', $telefonoa, '$espezialitatea', '$interesak', '$argazkia');";
+	if(izenakCheck($izena)&& abizenakCheck($abizenak)&& emailCheck($eposta)&& pasahitzaCheck($pasahitza)&& telefonoaCheck($telefonoa)){	
+		$query = "INSERT INTO Erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', '$telefonoa', '$espezialitatea', '$interesak', '$argazkia');";
 	
 		//echo("Query-a: $query <br>");
 		
@@ -54,7 +50,7 @@
 		else{
 			echo "<h2>Datuak ez dira sartu: " . $query . "</h2><br>" . $conn->error;
 		}
-	}	
+	}
 	
 	$conn->close();	
 ?>
