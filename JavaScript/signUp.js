@@ -46,7 +46,6 @@ function checkNagusia() {
         }
     }
 	return balioDu;
-    return true;
 }
 function ikusBalioak() {
     var sAux = "";

@@ -45,7 +45,7 @@
 		//echo("Query-a: $query <br>");
 		
 		if($conn->query($query) === TRUE) {
-			echo "<h2>Datuak ondo sartu dira</h2> <br><a href='showUsersWithImage.php'> Datuak ikusi </a>";
+			echo "<h2>Datuak ondo sartu dira</h2> <br><a href='showUsersWithImage.php'> Datuak ikusi </a><br><a href='../HTML/layout.html'> MyQuizz-era bueltatu </a>";
 		}
 		else{
 			echo "<h2>Datuak ez dira sartu: " . $query . "</h2><br>" . $conn->error;
