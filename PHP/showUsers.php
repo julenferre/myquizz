@@ -6,7 +6,7 @@
 	include "connect.php";
 	
 	// Datuak jaso
-	$query = "SELECT * FROM Erabiltzaile ";
+	$query = "SELECT * FROM erabiltzaile ";
 		
 	$erantzuna = $conn->query($query);
 	
