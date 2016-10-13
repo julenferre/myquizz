@@ -9,7 +9,7 @@
 		$eposta = $_POST['eposta'];
 		$pasahitza = $_POST['pasahitza'];
 
-		$query = "SELECT Pasahitza FROM Erabiltzaile WHERE Eposta='$eposta'";
+		$query = "SELECT Pasahitza FROM erabiltzaile WHERE Eposta='$eposta'";
 
 		$erantzuna = $conn->query($query);
 
