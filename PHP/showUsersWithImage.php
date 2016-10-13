@@ -35,7 +35,7 @@
 			echo "<td>" . $lerroa["Izena"] . "</td><td>" . $lerroa["Abizenak"]. "</td><td>" . $lerroa["Eposta"]. "</td><td>" . $lerroa["Pasahitza"]. "</td><td>" . $lerroa["Telefonoa"]. "</td><td>" . $lerroa["Espezialitatea"]. "</td><td>" . $lerroa["Interesak"]. "</td><td><img src='data:Argazkia/jpeg;base64,".base64_encode( $lerroa['Argazkia'] )."' width='100px' /></td>";
 			echo "</tr>";
 		}
-		echo "</table>";
+		echo "</table><br><p style='text-align: center;'><a href='../HTML/layout.html'> MyQuizz-era bueltatu </a></p>";
 	} else {
 		echo "0 results";
 	}
