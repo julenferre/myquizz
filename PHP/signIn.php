@@ -47,7 +47,7 @@
 		   href="../CSS/wide.css" />
 	<link rel="stylesheet"
 		   type="text/css" 
-		   media="only screen and (max-width: 480px)'
+		   media="only screen and (max-width: 480px)"
 		   href="../CSS/smartphone.css" />
 	<script src="../JavaScript/signUp.js"></script> <!--<script></script> horrela jartzea beharrezkoa da-->
   </head>
@@ -61,7 +61,7 @@
     </header>
 	<nav class="main" id="n1" role="navigation">
 		<span><a href="../HTML/layout.html">Home</a></span>
-		<span><a href="../HTML/questions.html">Quizzes</a></span>
+		<span><a href='questions.php'>Quizzes</a></span>
 		<span><a href="../HTML/credits.html">Credits</a></span>
 	</nav>
     <section class="main" id="s1">

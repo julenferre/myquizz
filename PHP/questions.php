@@ -1,3 +1,18 @@
+<?php
+
+	echo "<link rel='stylesheet' type='text/css' href='../CSS/style.css'></link>";
+	
+	//DDBBra konektatu		
+	include "connect.php";
+	
+	// Datuak jaso
+	$query = "SELECT * FROM galderak";
+		
+	$erantzuna = $conn->query($query);
+		
+	$conn->close();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,16 +39,22 @@
     </header>
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='layout.html'>Home</a></span>
-		<span><a href='questions.html'>Quizzes</a></span>
+		<span><a href='questions.php'>Quizzes</a></span>
 		<span><a href='credits.html'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
-    
-	
 	<div>
-		<p>Galderak laster egongo dira eskura!</p>
+		<?php
+		if ($erantzuna->num_rows > 0) {
+			while($lerroa = $erantzuna->fetch_assoc()) {
+				echo " -> " . $lerroa['galdera'] . " (Zailtasun maila: " . $lerroa['maila'] . ")<br>";
+		}
+		} else {
+			echo "Ez dago galderarik";
+		} 
+		?>
 		<br>
-		<p>Galdera berriak sartzeko, <a href="../PHP/signIn.php">identifikatu zaitez</a></p>
+		<p>Galdera berriak sartzeko, <a href="signIn.php">identifikatu zaitez</a></p>
 	</div>
     </section>
 	<footer class='main' id='f1'>
