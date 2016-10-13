@@ -13,16 +13,6 @@
 		   media='only screen and (max-width: 480px)'
 		   href='../CSS/smartphone.css' />
 		   
-	<script type="text/javascript">
-		function ikusBalioak(){
-			var sAux="Erantzun okerra";
-			var radios=document.getElementsByName("erantzuna");
-			if(radios[2].checked){
-				sAux="BAI!";
-			}			
-			alert(sAux);
-		}
-	</script>
   </head>
   <body>
   <div id='page-wrap'>
@@ -41,15 +31,9 @@
     
 	
 	<div>
-		<form id="erregistro" name="erregistro" onSubmit="ikusBalioak()">
-			Zenbat da 1+1? <br />
-			<input type="radio" name="erantzuna" value="2" /> 2 <br />
-			<input type="radio" name="erantzuna" value="10" /> 10  <br />
-			<input type="radio" name="erantzuna" value="ralph" /> Ralph liluragarria!  <br />
-			<input type="radio" name="erantzuna" value="7" /> 7  <br />
-			<br />
-			<input type="submit" value="Ados" />
-		</form>
+		<p>Galderak laster egongo dira eskura!</p>
+		<br>
+		<p>Galdera berriak sartzeko, <a href="../PHP/signIn.php">identifikatu zaitez</a></p>
 	</div>
     </section>
 	<footer class='main' id='f1'>

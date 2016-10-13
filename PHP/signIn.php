@@ -1,25 +1,9 @@
 <?php
 
 	if(isset($_POST['eposta'])){
-		//LOCALHOST
-		$servername = "localhost:3306";
-		$username = "root";
-		$password = "";
-		$ddbb = "quiz";
 		
-		//HOSTINGER
-		$serverH = "mysql.hostinger.es";
-		$userH = "u823979798_admin";
-		$passH = "adminroot";
-		$ddbbH = "u823979798_quiz";
-		
-		$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
-		//$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
-		
-		//Konexioa konprobatu
-		if (!$conn) {
-			die("Ezin izan da konexioa ezarri: " . $conn->connect_error);
-		}
+		//DDBBra konektatu		
+		include "connect.php";
 		
 		// Datuak bidali
 		$eposta = $_POST['eposta'];
@@ -32,15 +16,18 @@
 		if ($erantzuna->num_rows > 0) {
 			$lerroa = $erantzuna->fetch_assoc();
 			if($lerroa["Pasahitza"]===$pasahitza){
+				//Sesioaren erabiltzailearen izena bere eposta izango da
+				$_SESSION['login_user'] = $eposta;
+				//Galdera sartzera pasatzen gara
 				header("Location: insertQuestion.php");
 				exit;
 			}
 			else{
-				echo "Pasahitz okerra.";
+				echo "<script>alert('Pasahitza okerra');</script>";
 			}
 		}
 		else{
-			echo "Erabiltzaile okerra.";
+			echo "<script>alert('Erabiltzaile okerra');</script>";
 		}
 
 		$conn->close();
@@ -70,7 +57,7 @@
       	<span class="right" style="display:inline; float: right;"><a href="../HTML/signUp.html">Sign Up</a> </span><br/>
       	<span class="right" style="display:inline; float: right;"><a href="signIn.php">Log In</a> </span>
       	<span class="right" style="display:none; float: right;"><a href="/logout">LogOut</a> </span>
-		<h2>Sign Up</h2>
+		<h2>Sign In</h2>
     </header>
 	<nav class="main" id="n1" role="navigation">
 		<span><a href="../HTML/layout.html">Home</a></span>
@@ -82,9 +69,10 @@
 	<div>
 		<form id="erregistro" name="erregistro" style="text-align:center;" method="post" action="./signIn.php" >
 			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta" size="40"><br />
-			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" size="40"><br />
-			<a href="">Pasahitza ahaztu egin dut.</a> <br /><br />
-			<input type="submit" value="Ados" />
+			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" size="40"><br/>
+			(<a href="">Pasahitza ahaztu egin dut.</a>)<br /><br />
+			<input type="submit" value="Ados" /><br /><br />
+			<a href="../HTML/layout.html">Orrialde nagusira bueltatu</a> 
 		</form>
 	</div>
     </section>

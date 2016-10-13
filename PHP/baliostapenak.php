@@ -52,5 +52,21 @@
 		}
 		return true;
 	}
+	
+	function galderaCheck($galdera){
+		if(empty($galdera)) {
+			echo "<script>alert('Zerbait idatzi \'Galdera\' eremuan');</script>";
+			return false;
+		}
+		return true;
+	}
+	
+	function erantzunaCheck($erantzuna){
+		if(empty($erantzuna)) {
+			echo "<script>alert('Zerbait idatzi \'Erantzuna\' eremuan');</script>";
+			return false;
+		}
+		return true;
+	}
 
 ?>
