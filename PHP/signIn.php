@@ -56,7 +56,7 @@
 	<header class="main" id="h1">
       	<span class="right" style="display:inline; float: right;"><a href="../HTML/signUp.html">Sign Up</a> </span><br/>
       	<span class="right" style="display:inline; float: right;"><a href="signIn.php">Log In</a> </span>
-      	<span class="right" style="display:none; float: right;"><a href="/logout">LogOut</a> </span>
+      	<span class="right" style="display:none; float: right;"><a href="logout.php">LogOut</a> </span>
 		<h2>Sign In</h2>
     </header>
 	<nav class="main" id="n1" role="navigation">
@@ -64,17 +64,16 @@
 		<span><a href='questions.php'>Quizzes</a></span>
 		<span><a href="../HTML/credits.html">Credits</a></span>
 	</nav>
-    <section class="main" id="s1">
-	
-	<div>
-		<form id="erregistro" name="erregistro" style="text-align:center;" method="post" action="./signIn.php" >
-			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta" size="40"><br />
-			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza" size="40"><br/>
-			(<a href="">Pasahitza ahaztu egin dut.</a>)<br /><br />
-			<input type="submit" value="Ados" /><br /><br />
-			<a href="../HTML/layout.html">Orrialde nagusira bueltatu</a> 
-		</form>
-	</div>
+    <section class="main" id="s1">	
+		<div id="edukia">
+			<form id="erregistro" name="erregistro" method="post" action="./signIn.php" >
+				Eposta elektronikoa (*):<input type="text" id="eposta" name="eposta" size="40"><br />
+				Pasahitza(*):<input type="password" id="pasahitza" name="pasahitza" size="40"><br/>
+				(<a href="">Pasahitza ahaztu egin dut.</a>)<br /><br />
+				<input type="submit" value="Ados" /><br /><br />
+				<a href="../HTML/layout.html">Orrialde nagusira bueltatu</a> 
+			</form>
+		</div>
     </section>
 	<footer class="main" id="f1">
 		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>

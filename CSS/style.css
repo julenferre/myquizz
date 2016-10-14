@@ -1,20 +1,48 @@
 @charset "utf-8";
-* 						{margin: 0; padding: 0;}
-body						{font: 16px Georgia, serif;}
-
-#page-wrap				{margin: 2% auto; color: white;}
-#page-wrap >.main 		{border: 1px solid #999; padding: 1%;
-						 margin-bottom: 1px; color: black;}
-
-section > div				{padding: 20px;}
-header, nav, section		{background: #eee; text-align: center;}
-footer					{background: #eee; text-align: center;}
-nav span             			{ margin: 0px 10px 0px 0px;
-						width: 100%;
-						display: inline-block;}
-
-#ErrorMsgs          		 { color: #f61; font-size: smaler}
-
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font: 16px Georgia, serif;
+}
+header, nav, section {
+    background: #eee; 
+}
+nav span {
+    margin: 0px 10px 0px 0px;
+    width: 100%;
+    display: inline-block;
+}
+#page-wrap {
+    margin: 2% auto;
+    color: white;
+}
+#page-wrap >.main {
+    border: 1px solid #999;
+    padding: 1%;
+    margin-bottom: 1px;
+    color: black;
+    text-align: center;
+}
+section {
+	text-align: center;		
+}
+section > div {
+    padding: 20px;	
+	display: inline-block;
+}
+#edukia {
+    text-align: left
+}
 table, tr, td {
-	border: 1px solid black;
+    border: 1px solid black;
+}
+footer {
+    background: #eee;
+    text-align: center;
+}
+#ErrorMsgs {
+    color: #f61;
+    font-size: smaler
 }

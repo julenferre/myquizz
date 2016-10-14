@@ -34,24 +34,24 @@
 	<header class='main' id='h1'>
       	<span class="right" style="display:inline; float: right;"><a href="signUp.html">Sign Up</a> </span><br/>
       	<span class="right" style="display:inline; float: right;"><a href="../PHP/signIn.php">Log In</a> </span>
-      	<span class="right" style="display:none; float: right;"><a href="/logout">LogOut</a> </span>
+      	<span class="right" style="display:none; float: right;"><a href="logout.php">LogOut</a> </span>
 		<h2>Questions</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
-		<span><a href='layout.html'>Home</a></span>
+		<span><a href='../HTML/layout.html'>Home</a></span>
 		<span><a href='questions.php'>Quizzes</a></span>
-		<span><a href='credits.html'>Credits</a></span>
+		<span><a href='../HTML/credits.html'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
-	<div>
+	<div id="edukia">
 		<?php
-		if ($erantzuna->num_rows > 0) {
-			while($lerroa = $erantzuna->fetch_assoc()) {
-				echo " -> " . $lerroa['galdera'] . " (Zailtasun maila: " . $lerroa['maila'] . ")<br>";
-		}
-		} else {
-			echo "Ez dago galderarik";
-		} 
+			if ($erantzuna->num_rows > 0) {
+				while($lerroa = $erantzuna->fetch_assoc()) {
+					echo " -> " . $lerroa['galdera'] . " (Zailtasun maila: " . $lerroa['maila'] . ")<br>";
+				}
+			} else {
+				echo "Ez dago galderarik";
+			} 
 		?>
 		<br>
 		<p>Galdera berriak sartzeko, <a href="signIn.php">identifikatu zaitez</a></p>

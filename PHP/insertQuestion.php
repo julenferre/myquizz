@@ -2,8 +2,8 @@
 	
 	include "baliostapenak.php";
 	
-	if(isset($_POST['galdera']) && isset($_POST['erantzuna'])){
-		//DDBBra konektatu		
+	if(!empty($_POST['galdera']) && !empty($_POST['erantzuna'])){
+		//DDBBra konektatu
 		include "connect.php";
 		
 		// Datuak bidali
@@ -48,7 +48,7 @@
 	<header class="main" id="h1">
       	<span class="right" style="display:inline; float: right;"><a href="../HTML/signUp.html">Sign Up</a> </span><br/>
       	<span class="right" style="display:inline; float: right;"><a href="signIn.php">Log In</a> </span>
-      	<span class="right" style="display:none; float: right;"><a href="logOut.php">LogOut</a> </span>
+      	<span class="right" style="display:none; float: right;"><a href="logout.php">LogOut</a> </span>
 		<h2>Quizz - Galdera berria sartu</h2>
     </header>
 	<nav class="main" id="n1" role="navigation">
@@ -56,24 +56,23 @@
 		<span><a href="questions.php">Quizzes</a></span>
 		<span><a href="../HTML/credits.html">Credits</a></span>
 	</nav>
-    <section class="main" id="s1">
-	
-	<div>
-		<form id="erregistro" name="erregistro" style="text-align:center;" method="post" action="./insertQuestion.php" >
-			Galdera (*): <textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300"></textarea><br />
-			Erantzuna (*):  <input type="text" id="erantzuna" name="erantzuna" size="50" maxlength="50"><br />
-			Zailtasun maila: 
-				<select id="zailtasuna" name="zailtasuna">
-					<option></option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</select><br>
-			<input type="submit" value="Galdera gehitu" />
-		</form>
-	</div>
+    <section class="main" id="s1">	
+		<div id="edukia">
+			<form id="erregistro" name="erregistro" method="post" action="./insertQuestion.php" >
+				Galdera (*): <br><textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300"></textarea><br />
+				Erantzuna (*):  <br><input type="text" id="erantzuna" name="erantzuna" size="50" maxlength="50"><br />
+				Zailtasun maila: 
+					<select id="zailtasuna" name="zailtasuna">
+						<option></option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select><br>
+				<input type="submit" value="Galdera gehitu" />
+			</form>
+		</div>
     </section>
 	<footer class="main" id="f1">
 		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
