@@ -1,37 +1,8 @@
-<?php
-	
-	include "baliostapenak.php";
-	
-	if(!empty($_POST['galdera']) && !empty($_POST['erantzuna'])){
-		//DDBBra konektatu
-		include "connect.php";
-		
-		// Datuak bidali
-		$galdera = $_POST['galdera'];
-		$erantzuna = $_POST['erantzuna'];
-		$zailtasuna = $_POST['zailtasuna'];
-	
-		if(galderaCheck($galdera) && erantzunaCheck($erantzuna)){
-			$eposta = $_SESSION['login_user'];
-			$query = "INSERT INTO galderak VALUES ('','$eposta','$galdera', '$erantzuna', '$zailtasuna')";
-			
-			if($conn->query($query) === TRUE) {
-				echo "<script>alert('Datuak ondo sartu dira');</script>";
-			}
-			else{
-				echo "<h2>Datuak ez dira sartu: " . $query . "</h2><br>" . $conn->error;
-			}
-		}
-		
-		$conn->close();
-	}
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-	<title>Sign In</title>
+	<title>Galdera Sartu</title>
     <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
 	<link rel="stylesheet" 
 		   type="text/css" 
@@ -59,8 +30,10 @@
     <section class="main" id="s1">	
 		<div id="edukia">
 			<form id="erregistro" name="erregistro" method="post" action="./insertQuestion.php" >
-				Galdera (*): <br><textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300"></textarea><br />
-				Erantzuna (*):  <br><input type="text" id="erantzuna" name="erantzuna" size="50" maxlength="50"><br />
+				Galdera (*): <br>
+				<textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300" style="resize: none"></textarea><br />
+				Erantzuna (*): <br>
+				<input type="text" id="erantzuna" name="erantzuna" size="50" maxlength="50"><br />
 				Zailtasun maila: 
 					<select id="zailtasuna" name="zailtasuna">
 						<option></option>
@@ -72,6 +45,32 @@
 					</select><br>
 				<input type="submit" value="Galdera gehitu" />
 			</form>
+			<?php
+				include "baliostapenak.php";
+				
+				if(isset($_POST['galdera'])){
+					//DDBBra konektatu
+					include "connect.php";
+					
+					// Datuak bidali
+					$galdera = $_POST['galdera'];
+					$erantzuna = $_POST['erantzuna'];
+					$zailtasuna = $_POST['zailtasuna'];
+					if(galderaCheck($galdera) && erantzunaCheck($erantzuna)){
+						$eposta = $_SESSION['login_user'];
+						$query = "INSERT INTO galderak VALUES ('','$eposta','$galdera', '$erantzuna', '$zailtasuna')";
+						
+						if($conn->query($query) === TRUE) {
+							echo "<br/><br/><font color='green'>Datuak ondo sartu dira</font>";
+						}
+						else{
+							echo "<br/><br/><h2><font color='red'>Datuak ez dira sartu: </font>" . $query . "</h2><br>" . $conn->error;
+						}
+					}
+					
+					$conn->close();
+				}
+			?>
 		</div>
     </section>
 	<footer class="main" id="f1">

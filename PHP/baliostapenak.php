@@ -56,7 +56,7 @@
 	//Galdera balidatu
 	function galderaCheck($galdera){
 		if(empty($galdera)) {
-			echo "<script>alert('Zerbait idatzi \'Galdera\' eremuan');</script>";
+			echo "<br/><br/><font color='red'>Zerbait idatzi 'Galdera' eremuan</font>";
 			return false;
 		}
 		return true;
@@ -65,7 +65,7 @@
 	//Erantzuna balidatu
 	function erantzunaCheck($erantzuna){
 		if(empty($erantzuna)) {
-			echo "<script>alert('Zerbait idatzi \'Erantzuna\' eremuan');</script>";
+			echo "<br/><br/><font color='red'>Zerbait idatzi 'Erantzuna' eremuan</font>";
 			return false;
 		}
 		return true;

@@ -1,40 +1,3 @@
-<?php
-
-	if(isset($_POST['eposta'])){
-		
-		//DDBBra konektatu		
-		include "connect.php";
-		
-		// Datuak bidali
-		$eposta = $_POST['eposta'];
-		$pasahitza = $_POST['pasahitza'];
-
-		$query = "SELECT Pasahitza FROM erabiltzaile WHERE Eposta='$eposta'";
-
-		$erantzuna = $conn->query($query);
-
-		if ($erantzuna->num_rows > 0) {
-			$lerroa = $erantzuna->fetch_assoc();
-			if($lerroa["Pasahitza"]===$pasahitza){
-				//Sesioaren erabiltzailearen izena bere eposta izango da
-				$_SESSION['login_user'] = $eposta;
-				//Galdera sartzera pasatzen gara
-				header("Location: insertQuestion.php");
-				exit;
-			}
-			else{
-				echo "<script>alert('Pasahitza okerra');</script>";
-			}
-		}
-		else{
-			echo "<script>alert('Erabiltzaile okerra');</script>";
-		}
-
-		$conn->close();
-	};
-
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -73,6 +36,45 @@
 				<input type="submit" value="Ados" /><br /><br />
 				<a href="../HTML/layout.html">Orrialde nagusira bueltatu</a> 
 			</form>
+			<?php
+				if(isset($_POST['eposta'])){
+					//DDBBra konektatu		
+					include "connect.php";
+					// Datuak bidali
+					$eposta = $_POST['eposta'];
+					$pasahitza = $_POST['pasahitza'];
+
+					$query = "SELECT Pasahitza FROM erabiltzaile WHERE Eposta='$eposta'";
+
+					$erantzuna = $conn->query($query);
+
+					if ($erantzuna->num_rows > 0) {
+						$lerroa = $erantzuna->fetch_assoc();
+						if($lerroa["Pasahitza"]===$pasahitza){
+							//Sesioaren erabiltzailearen izena bere eposta izango da
+							$_SESSION['login_user'] = $eposta;
+							$data = date('Y/m/d H:i:s');
+							$query = "INSERT INTO konexioak VALUES ('','$eposta','$data')";
+							if($conn->query($query) === TRUE) {
+								//Galdera sartzera pasatzen gara
+								header("Location: insertQuestion.php");
+								exit;
+							}
+							else{
+								echo "<h2>Datuak ez dira sartu: " . $query . "</h2><br>" . $conn->error;
+							}
+						}
+						else{
+							echo "<br/><br/><font color='red'>Pasahitza okerra</font>";
+						}
+					}
+					else{
+						echo "<br/><br/><font color='red'>Erabiltzaile okerra</font>";
+					}
+
+					$conn->close();
+				};
+			?>
 		</div>
     </section>
 	<footer class="main" id="f1">
