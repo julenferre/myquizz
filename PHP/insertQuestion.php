@@ -58,10 +58,26 @@
 					$zailtasuna = $_POST['zailtasuna'];
 					if(galderaCheck($galdera) && erantzunaCheck($erantzuna)){
 						$eposta = $_SESSION['login_user'];
-						$query = "INSERT INTO galderak VALUES ('','$eposta','$galdera', '$erantzuna', '$zailtasuna')";
-						
+						$query = "INSERT INTO galderak VALUES ('','$eposta','$galdera', '$erantzuna', '$zailtasuna')";						
 						if($conn->query($query) === TRUE) {
-							echo "<br/><br/><font color='green'>Datuak ondo sartu dira</font>";
+							echo "<br/><br/><font color='green'>Datuak ondo sartu dira</font><br>";
+							//ekintzak taulan datuak sartzen dira
+							$kon_id_q = "SELECT * FROM konexioak WHERE erab_eposta = '$eposta' ORDER BY ordua DESC LIMIT 1";
+							$kon_id_er = $conn->query($kon_id_q);
+							$kon_id = NULL;
+							while ($kon_id_ler = $kon_id_er->fetch_assoc() ) {
+								$kon_id = $kon_id_ler["id"];
+							} 
+							if($kon_id == NULL){
+								echo "0 results<br>";
+							}
+							$mota = "Galdera sartu";
+							$ordua = date('Y/m/d H:i:s');
+							$ip = $_SERVER['REMOTE_ADDR'];
+							$query = "INSERT INTO ekintzak VALUES ('','$kon_id','$eposta', '$mota', '$ordua', '$ip')";
+							if($conn->query($query) === FALSE) {
+								echo "<br/><br/><font color='red'>Ekintzaren datuak ez dira gorde: </font>". $query . "</h2><br>" . $conn->error;
+							}
 						}
 						else{
 							echo "<br/><br/><h2><font color='red'>Datuak ez dira sartu: </font>" . $query . "</h2><br>" . $conn->error;

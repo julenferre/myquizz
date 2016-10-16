@@ -53,6 +53,7 @@
 						if($lerroa["Pasahitza"]===$pasahitza){
 							//Sesioaren erabiltzailearen izena bere eposta izango da
 							$_SESSION['login_user'] = $eposta;
+							//konexioak taulan erregistro berria sartzen dugu
 							$data = date('Y/m/d H:i:s');
 							$query = "INSERT INTO konexioak VALUES ('','$eposta','$data')";
 							if($conn->query($query) === TRUE) {
