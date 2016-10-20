@@ -24,7 +24,7 @@
 
 	//Emaila balidatzen da
 	function emailCheck($eposta){
-		$epostaCheck="/[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)/";   
+		$epostaCheck="/[a-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)/";   
 		$vardump = filter_var($eposta, FILTER_VALIDATE_REGEXP, array("options" => array("regexp"=>$epostaCheck)));
 		if(empty($vardump)) {      
 			echo "Emailaren formatua okerra da. <br>";
