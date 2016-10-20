@@ -47,19 +47,10 @@
 			}
 			//ekintzak taulan datuak sartzen dira			
 			$eposta = NULL;
+			$kon_id = NULL;
 			if(session_id() == ''){
 				$eposta = $_SESSION['login_user'];
-			}
-			$kon_id = NULL;
-			if($eposta != NULL){
-				$kon_id_q = "SELECT * FROM konexioak WHERE erab_eposta = '$eposta' ORDER BY ordua DESC LIMIT 1";
-				$kon_id_er = $conn->query($kon_id_q);				
-				while ($kon_id_ler = $kon_id_er->fetch_assoc() ) {
-					$kon_id = $kon_id_ler["id"];
-				} 
-				if($kon_id == NULL){
-					echo "0 results<br>";
-				}
+				$kon_id = $_SESSION['konexio_id'];
 			}
 			$mota = "Galderak ikusi";
 			$ordua = date('Y/m/d H:i:s');

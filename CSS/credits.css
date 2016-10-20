@@ -35,10 +35,6 @@ div > p {
 	margin: 5px;
 }
 
-img {
-	background-color: #FABADA;
-}
-
 h2 {
 	color: black;
 }
@@ -67,5 +63,6 @@ nav span {
 }
 
 img {
+	background-color: #FABADA;
 	height: 100px; width: 100px;
 }

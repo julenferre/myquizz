@@ -62,15 +62,7 @@
 						if($conn->query($query) === TRUE) {
 							echo "<br/><br/><font color='green'>Datuak ondo sartu dira</font><br>";
 							//ekintzak taulan datuak sartzen dira
-							$kon_id_q = "SELECT * FROM konexioak WHERE erab_eposta = '$eposta' ORDER BY ordua DESC LIMIT 1";
-							$kon_id_er = $conn->query($kon_id_q);
-							$kon_id = NULL;
-							while ($kon_id_ler = $kon_id_er->fetch_assoc() ) {
-								$kon_id = $kon_id_ler["id"];
-							} 
-							if($kon_id == NULL){
-								echo "0 results<br>";
-							}
+							$kon_id = $_SESSION['konexio_id'];
 							$mota = "Galdera sartu";
 							$ordua = date('Y/m/d H:i:s');
 							$ip = $_SERVER['REMOTE_ADDR'];

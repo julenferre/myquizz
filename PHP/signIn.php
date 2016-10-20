@@ -57,6 +57,13 @@
 							$data = date('Y/m/d H:i:s');
 							$query = "INSERT INTO konexioak VALUES ('','$eposta','$data')";
 							if($conn->query($query) === TRUE) {
+								$query = "SELECT id FROM konexioak WHERE eposta='$eposta' and ordua='$data'";
+								$erantzuna = $conn->query($query);
+								if ($erantzuna->num_rows > 0) {
+									while($lerroa = $erantzuna->fetch_assoc()) {
+										$_SESSION['konexio_id'] = $lerroa['id'];
+									}
+								}
 								//Galdera sartzera pasatzen gara
 								header("Location: insertQuestion.php");
 								exit;
