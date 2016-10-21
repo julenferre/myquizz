@@ -77,7 +77,7 @@
 							//Fitxategia gorde
 							$xml->asXML("../XML/galderak.xml");
 
-							echo "<br/><br/><font color='green'>Datuak ondo sartu dira</font><br>";
+							echo "<br/><br/><font color='green'>Datuak ondo sartu dira</font><br><a href='../XML/galderak.xml' target='_blank'>galderak.xml ikusi</a>";
 							//ekintzak taulan datuak sartzen dira
 							$kon_id = $_SESSION['konexio_id'];
 							$mota = "Galdera sartu";

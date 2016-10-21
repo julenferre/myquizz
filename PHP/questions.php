@@ -40,7 +40,7 @@
 			
 			if ($erantzuna->num_rows > 0) {
 				while($lerroa = $erantzuna->fetch_assoc()) {
-					echo " -> " . $lerroa['galdera'] . " (Zailtasun maila: " . $lerroa['maila'] . ")<br>";
+					echo " -> <b>" .$lerroa['gaia']. ":</b> " . $lerroa['galdera'] . " (Zailtasun maila: " . $lerroa['maila'] . ")<br>";
 				}
 			} else {
 				echo "Ez dago galderarik";
