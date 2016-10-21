@@ -34,6 +34,8 @@
 				<textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300" style="resize: none"></textarea><br />
 				Erantzuna (*): <br>
 				<input type="text" id="erantzuna" name="erantzuna" size="50" maxlength="50"><br />
+				Gaia: <br />
+				<input type="text" id="gaia" name="gaia" size="50" maxlength="15"><br />
 				Zailtasun maila: 
 					<select id="zailtasuna" name="zailtasuna">
 						<option></option>
@@ -42,7 +44,7 @@
 						<option>3</option>
 						<option>4</option>
 						<option>5</option>
-					</select><br>
+					</select><br /><br /><br />
 				<input type="submit" value="Galdera gehitu" />
 			</form>
 			<?php
@@ -55,22 +57,23 @@
 					// Datuak bidali
 					$galdera = $_POST['galdera'];
 					$erantzuna = $_POST['erantzuna'];
+					$gaia = $_POST['gaia'];
 					$zailtasuna = $_POST['zailtasuna'];
 					if(galderaCheck($galdera) && erantzunaCheck($erantzuna)){
 						$eposta = $_SESSION['login_user'];
-						$query = "INSERT INTO galderak VALUES ('','$eposta','$galdera', '$erantzuna', '$zailtasuna')";	
+						$query = "INSERT INTO galderak VALUES ('','$eposta','$galdera', '$erantzuna','$gaia', '$zailtasuna')";	
 						if($conn->query($query) === TRUE) {
 							//XML fitxategia ireki
 							$xml = simplexml_load_file("../XML/galderak.xml");
 							//Informazioa duten semeak sortu
 							$child = $xml->addChild('assessmentItem');
+							$child->addAttribute('complexity',$zailtasuna);
+							$child->addAttribute('subject',$gaia);
 							$galderaXML = $child->addChild('itemBody');
 							$galderaXML->addChild('p',$galdera);
 							$erantzunaXML = $child->addChild('correctResponse');
 							$erantzunaXML->addChild('value', $erantzuna);
-
-							$domAttribute = $child->addAttribute('complexity',$zailtasuna);
-							$domAttribute = $child->addAttribute('subject','');
+							
 							//Fitxategia gorde
 							$xml->asXML("../XML/galderak.xml");
 
