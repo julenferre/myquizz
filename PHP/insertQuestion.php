@@ -59,23 +59,21 @@
 					if(galderaCheck($galdera) && erantzunaCheck($erantzuna)){
 						$eposta = $_SESSION['login_user'];
 						$query = "INSERT INTO galderak VALUES ('','$eposta','$galdera', '$erantzuna', '$zailtasuna')";	
-						
-						//XML fitxategia ireki
-						$xml = simplexml_load_file("../XML/galderak.xml");
-						//Informazioa duten semeak sortu
-						$child = $xml->addChild('assessmentItem');
-						$galderaXML = $child->addChild('itemBody');
-						$galderaXML->addChild('p',$galdera);
-						$erantzunaXML = $child->addChild('correctResponse');
-						$erantzunaXML->addChild('value', $erantzuna);
-
-						$domAttribute = $child->addAttribute('complexity',$zailtasuna);
-						$domAttribute = $child->addAttribute('subject','');
-
-						//Fitxategia gorde
-						$xml->asXML("../XML/galderak.xml");
-
 						if($conn->query($query) === TRUE) {
+							//XML fitxategia ireki
+							$xml = simplexml_load_file("../XML/galderak.xml");
+							//Informazioa duten semeak sortu
+							$child = $xml->addChild('assessmentItem');
+							$galderaXML = $child->addChild('itemBody');
+							$galderaXML->addChild('p',$galdera);
+							$erantzunaXML = $child->addChild('correctResponse');
+							$erantzunaXML->addChild('value', $erantzuna);
+
+							$domAttribute = $child->addAttribute('complexity',$zailtasuna);
+							$domAttribute = $child->addAttribute('subject','');
+							//Fitxategia gorde
+							$xml->asXML("../XML/galderak.xml");
+
 							echo "<br/><br/><font color='green'>Datuak ondo sartu dira</font><br>";
 							//ekintzak taulan datuak sartzen dira
 							$kon_id = $_SESSION['konexio_id'];
