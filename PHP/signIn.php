@@ -61,11 +61,12 @@
 								$erantzuna = $conn->query($query);
 								if ($erantzuna->num_rows > 0) {
 									while($lerroa = $erantzuna->fetch_assoc()) {
+										echo $lerroa['id'];
 										$_SESSION['konexio_id'] = $lerroa['id'];
 									}
 								}
 								//Galdera sartzera pasatzen gara
-								header("Location: insertQuestion.php");
+								//header("Location: insertQuestion.php");
 								exit;
 							}
 							else{
