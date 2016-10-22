@@ -25,7 +25,9 @@
 	<nav class="main" id="n1" role="navigation">
 		<span><a href="../HTML/layout.html">Home</a></span>
 		<span><a href="questions.php">Quizzes</a></span>
+		<span><a href='../HTML/getUserInform.html'>Teachers</a></span>
 		<span><a href="../HTML/credits.html">Credits</a></span>
+		
 	</nav>
     <section class="main" id="s1">	
 		<div id="edukia">
@@ -75,7 +77,9 @@
 							$erantzunaXML->addChild('value', $erantzuna);
 							
 							//Fitxategia gorde
-							$xml->asXML("../XML/galderak.xml");
+							if($xml->asXML("../XML/galderak.xml") === FALSE) {
+								echo "<br/><br/><font color='red'>Galderaren datuak ez dira XML-an gorde: </font>". $xml . "</h2><br>";
+							}
 
 							echo "<br/><br/><font color='green'>Datuak ondo sartu dira</font><br><a href='../XML/galderak.xml' target='_blank'>galderak.xml ikusi</a>";
 							//ekintzak taulan datuak sartzen dira
