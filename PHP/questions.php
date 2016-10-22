@@ -64,6 +64,8 @@
 			$conn->close();
 		?>
 		<br>
+		<p>Galderak taulan ikusteko, <a href="seeXMLquestions.php">klikatu hemen</a></p>
+		<br><br>
 		<p>Galdera berriak sartzeko, <a href="signIn.php">identifikatu zaitez</a></p>
 	</div>
     </section>
