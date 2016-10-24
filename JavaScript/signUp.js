@@ -84,9 +84,9 @@ function telefonoaCheck() {
 }
 function espezBesteakIkusi() {
 	if(document.getElementById("espezialitatea").value=="Besteak"){
-		document.getElementById("espez_besteak").style.display = "inline";
+		document.getElementById("divBesteak").style.display = "inline";
 	}
 	else {
-		document.getElementById("espez_besteak").style.display = "none";
+		document.getElementById("divBesteak").style.display = "none";
 	}
 }

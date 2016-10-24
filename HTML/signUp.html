@@ -38,20 +38,28 @@
 	
 	<div id="edukia">
 		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkNagusia()" action="../PHP/enrollWithImage.php" enctype="multipart/form-data" >
-			Izena (*): <input type="text" id="izena" name="izena"><br />
-			Abizenak (*): <input type="text" id="abizenak" name="abizenak"><br />
-			Eposta elektronikoa (*): <input type="text" id="eposta" name="eposta" size="50"><br />
-			Pasahitza(*):  <input type="password" id="pasahitza" name="pasahitza"><br />
-			Telefono zenbakia(*):  <input type="text" id="telefonoa" name="telefonoa" maxlength="9" size="9"><br />
-			Espezialitatea(*): 
+			Izena: 
+			<input type="text" id="izena" name="izena" pattern="([A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/><font color="red">*</font> <br/>
+			Abizenak: 
+			<input type="text" id="abizenak" name="abizenak" pattern="([A-Z][a-z]+\s[A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/><font color="red">*</font> <br/>
+			Eposta elektronikoa: 
+			<input type="text" id="eposta" name="eposta" size="25" pattern="[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)" required/><font color="red">*</font><br/>
+			Pasahitza: 
+			<input type="password" id="pasahitza" name="pasahitza" size="25" minlength=6 required/><font color="red">*</font> <br/>
+			Telefono zenbakia: 
+			<input type="text" id="telefonoa" name="telefonoa" size="10" pattern="[0-9]{9}" required/><font color="red">*</font> <br/>
+			Espezialitatea: 
 				<select id="espezialitatea" name="espezialitatea" onChange="espezBesteakIkusi()">
 					<option>Software ingeniaritza</option>
 					<option>Konputagailuen ingeniaritza</option>
 					<option>Konputazioa</option>
 					<option>Besteak</option>
-				</select>
-			<input type="text" id="espez_besteak" name="espez_besteak" style="display: none" value="Idatzi hemen zure espezialitatea" size="50"><br />
-			Interesa duzun teknologiak eta erremintak: <input type="text" id="tresnak" name="tresnak"><br />
+				</select><font color="red">*</font> 
+			<div id="divBesteak" style="display:none">
+				<br/><input type="text" id="espez_besteak" name="espez_besteak" placeholder="Idatzi hemen zure espezialitatea" size="50">
+			</div><br/>
+			Interesa duzun teknologiak eta erremintak: <br />
+			<textarea id="tresnak" name="tresnak" style="resize: none; width: 320px; height: 40px"></textarea><br />
 			Argazkia: <input type="file" id="argazkia" name="argazkia" onchange="iruadiAurrekarga(this.files[0])"> <br/>
 			<img id="argazkiAurrekarga" alt="Argazkia" style="display: none; height: 150px; width:auto" /><br/>
 			<input type="submit" value="Ados" />
