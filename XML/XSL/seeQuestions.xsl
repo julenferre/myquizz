@@ -16,17 +16,18 @@
 								</FONT>
 							</td>
 							<td>
-								<FONT SIZE="2" COLOR="blue" FACE="Verdana">
+								<FONT SIZE="2" COLOR="red" FACE="Stencil">
 									<xsl:value-of select="@complexity"/>
 								</FONT>
 							</td>
 							<td>
-								<FONT SIZE="2" COLOR="green" FACE="Verdana">
+								<FONT SIZE="2" COLOR="green" FACE="Comic Sans MS">
 									<xsl:value-of select="@subject"/>
 								</FONT>
 							</td>
 						</tr>
 					</xsl:for-each>
+					<a href="../PHP/questions.php">Atzera bueltatu</a>
 				</table>
 			</BODY>
 		</HTML>

@@ -64,7 +64,9 @@
 			$conn->close();
 		?>
 		<br>
-		<p>Galderak taulan ikusteko, <a href="seeXMLquestions.php">klikatu hemen</a></p>
+		<p>XML galderak taulan ikusteko (PHP), <a href="seeXMLquestions.php">klikatu hemen</a> (Derrigorrezko zatia)</p>
+		<br><br>
+		<p>XML galderak taulan ikusteko (XSL), <a href="../XML/galderak.xml">klikatu hemen</a> (Hautazko zatia)</p>
 		<br><br>
 		<p>Galdera berriak sartzeko, <a href="signIn.php">identifikatu zaitez</a></p>
 	</div>
