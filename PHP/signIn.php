@@ -23,10 +23,10 @@
 		<h2>Sign In</h2>
     </header>
 	<nav class="main" id="n1" role="navigation">
-		<span><a href="../HTML/layout.html">Home</a></span>
-		<span><a href='questions.php'>Quizzes</a></span>
+		<span><a href='../HTML/layout.html'>Home</a></span>
+		<span><a href='../PHP/questions.php'>Quizzes</a></span>
 		<span><a href='../HTML/getUserInform.html'>Teachers</a></span>
-		<span><a href="../HTML/credits.html">Credits</a></span>
+		<span><a href='../HTML/credits.html'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">	
 		<div id="edukia">
