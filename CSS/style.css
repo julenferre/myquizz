@@ -6,7 +6,7 @@
 body {
     font: 16px Georgia, serif;
 }
-header, nav, section {
+header, nav, section, footer{
     background: #eee; 
 }
 nav span {
@@ -39,10 +39,9 @@ table, tr, td {
     border: 1px solid black;
 }
 footer {
-    background: #eee;
     text-align: center;
 }
 #ErrorMsgs {
     color: #f61;
-    font-size: smaler
+    font-size: smaller;
 }

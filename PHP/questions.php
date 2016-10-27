@@ -29,7 +29,7 @@
 		<span><a href='../HTML/credits.html'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
-	<div id="edukia">
+	<div id="edukia" style="height: 55%; border: 1px solid black; background: white; overflow:auto;">
 		<?php
 			//DDBBra konektatu		
 			include "connect.php";
@@ -63,7 +63,8 @@
 			
 			$conn->close();
 		?>
-		<br>
+	</div>
+	<div id="EdukiEstekak">
 		<p>XML galderak taulan ikusteko (PHP), <a href="seeXMLquestions.php">klikatu hemen</a> (Derrigorrezko zatia)</p>
 		<br><br>
 		<p>XML galderak taulan ikusteko (XSL), <a href="../XML/galderak.xml">klikatu hemen</a> (Hautazko zatia)</p>
