@@ -12,18 +12,17 @@
 		   type="text/css" 
 		   media="only screen and (max-width: 480px)"
 		   href="../CSS/smartphone.css" />
-	<script type="text/javascript">					
-		xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function(){
-			if ((xhttp.readyState==4)&&(xhttp.status==200 ))
-			{ 
-				document.getElementById("galderakIkusi").innerHTML= xhttp.responseText;				
-			}
-		};
-		
-		function galderakIkusi(){
-			xhttp.open("GET","userQuestionsQuery.php", true);
-			xhttp.send();
+	<script type="text/javascript">	
+		function galderakIkusi(){		
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if ((xhttp.readyState==4)&&(xhttp.status==200 )){ 
+					document.getElementById("seeUserQuestions").innerHTML= xhttp.responseText;	
+					document.getElementById("seeUserQuestions").style.display = 'inline-block';
+				}
+			};
+				xhttp.open("GET","userQuestionsQuery.php", true);
+				xhttp.send();
 		}
 	</script>
   </head>
@@ -59,17 +58,16 @@
 						<option>3</option>
 						<option>4</option>
 						<option>5</option>
-					</select><br /><br /><br />
+					</select><br /><br />
 				<input type="submit" value="Galdera gehitu" />
 			</form>
 			<?php
 				include "insertQuestionQuery.php";
-			?>
+			?><br/>
 			<input type="button" id="galderakIkusi" name="galderakIkusi" value="Zure galderak ikusi" onClick="galderakIkusi()" />
-			
-			<div id="seeUserQuestions">
-			</div><!--div seeUserQuestions-->
-		</div><!--div edukia-->
+		</div><!--div edukia--><br/>
+		<div id="seeUserQuestions" style="display: none; height: 10%; width:70% ; border: 1px solid black; background: white; overflow:auto;">
+		</div><!--div seeUserQuestions-->
     </section>
 	<footer class="main" id="f1">
 		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
