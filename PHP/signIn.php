@@ -12,7 +12,6 @@
 		   type="text/css" 
 		   media="only screen and (max-width: 480px)"
 		   href="../CSS/smartphone.css" />
-	<script src="../JavaScript/signUp.js"></script> <!--<script></script> horrela jartzea beharrezkoa da-->
   </head>
   <body>
   <div id="page-wrap">
@@ -66,7 +65,8 @@
 									}
 								}
 								//Galdera sartzera pasatzen gara
-								header("Location: insertQuestion.php");
+								//header("Location: insertQuestion.php");
+								header("Location: handlingQuizes.php");
 								exit;
 							}
 							else{
