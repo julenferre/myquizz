@@ -31,7 +31,7 @@
 	</nav>
     <section class="main" id="s1">	
 		<div id="edukia">
-			<form id="erregistro" name="erregistro" method="post" action="./insertQuestion.php" >
+			<form id="erregistro" name="erregistro" method="GET" action="./insertQuestion.php" >
 				Galdera (*): <br>
 				<textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300" style="resize: none"></textarea><br />
 				Erantzuna (*): <br>
@@ -46,7 +46,7 @@
 						<option>3</option>
 						<option>4</option>
 						<option>5</option>
-					</select><br /><br /><br />
+					</select><br /><br />
 				<input type="submit" value="Galdera gehitu" />
 			</form>
 			<?php

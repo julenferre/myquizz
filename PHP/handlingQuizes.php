@@ -24,17 +24,17 @@
 				xhttp.open("GET","userQuestionsQuery.php", true);
 				xhttp.send();
 		}
-		function galderaBidali(){	
+		function galderaBidali(gal,era,gai,zai){	
 			xhttp = new XMLHttpRequest();
-
+			var params = "galdera="+gal+"&erantzuna="+era+"&gaia="+gai+"&zailtasuna="+zai;
 			xhttp.onreadystatechange = function(){
 				if ((xhttp.readyState==4)&&(xhttp.status==200 )){ 
 					document.getElementById("mezuaGaldera").innerHTML= xhttp.responseText;
 					document.getElementById("mezuaGaldera").style.display = 'inline-block';
 				}
 			};
-				xhttp.open("GET","insertQuestionQuery.php", true);
-				xhttp.send(params);
+				xhttp.open("GET","insertQuestionQuery.php?"+params, true);
+				xhttp.send();
 			return false;
 		}
 	</script>
@@ -56,7 +56,7 @@
 	</nav>
     <section class="main" id="s1">	
 		<div id="edukia">
-			<form id="erregistro" name="erregistro" method="post" onsubmit="return galderaBidali()">
+			<form id="erregistro" name="erregistro" method="post" onsubmit="return galderaBidali(galdera.value,erantzuna.value,gaia.value,zailtasuna.value)">
 				Galdera (*): <br>
 				<textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300" style="resize: none"></textarea><br />
 				Erantzuna (*): <br>
