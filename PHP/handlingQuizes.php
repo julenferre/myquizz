@@ -24,6 +24,19 @@
 				xhttp.open("GET","userQuestionsQuery.php", true);
 				xhttp.send();
 		}
+		function galderaBidali(){	
+			xhttp = new XMLHttpRequest();
+
+			xhttp.onreadystatechange = function(){
+				if ((xhttp.readyState==4)&&(xhttp.status==200 )){ 
+					document.getElementById("mezuaGaldera").innerHTML= xhttp.responseText;
+					document.getElementById("mezuaGaldera").style.display = 'inline-block';
+				}
+			};
+				xhttp.open("GET","insertQuestionQuery.php", true);
+				xhttp.send(params);
+			return false;
+		}
 	</script>
   </head>
   <body>
@@ -43,7 +56,7 @@
 	</nav>
     <section class="main" id="s1">	
 		<div id="edukia">
-			<form id="erregistro" name="erregistro" method="post" action="./insertQuestion.php" >
+			<form id="erregistro" name="erregistro" method="post" onsubmit="return galderaBidali()">
 				Galdera (*): <br>
 				<textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300" style="resize: none"></textarea><br />
 				Erantzuna (*): <br>
@@ -58,15 +71,14 @@
 						<option>3</option>
 						<option>4</option>
 						<option>5</option>
-					</select><br /><br />
-				<input type="submit" value="Galdera gehitu" />
+					</select><br />
+				<input type="submit" value="Galdera gehitu"/>
 			</form>
-			<?php
-				include "insertQuestionQuery.php";
-			?><br/>
+			<div id="mezuaGaldera" style="display: none;">
+			</div><br />
 			<input type="button" id="galderakIkusi" name="galderakIkusi" value="Zure galderak ikusi" onClick="galderakIkusi()" />
 		</div><!--div edukia--><br/>
-		<div id="seeUserQuestions" style="display: none; height: 10%; width:70% ; border: 1px solid black; background: white; overflow:auto;">
+		<div id="seeUserQuestions" style="display: none; height: 25%; width:70% ; border: 1px solid black; background: white; overflow:auto;">
 		</div><!--div seeUserQuestions-->
     </section>
 	<footer class="main" id="f1">

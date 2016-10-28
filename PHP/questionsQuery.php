@@ -2,11 +2,14 @@
 	//DDBBra konektatu		
 	include "connect.php";
 	
-	$eposta = NULL;
-	$kon_id = NULL;
-	if(session_id() != ''){
+	
+	if(isset($_SESSION['login_user'])){
 		$eposta = $_SESSION['login_user'];
 		$kon_id = $_SESSION['konexio_id'];
+	}
+	else{
+		$eposta = NULL;
+		$kon_id = NULL;
 	}
 	
 	// Datuak jaso
