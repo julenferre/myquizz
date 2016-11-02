@@ -26,14 +26,15 @@ nav span {
     text-align: center;
 }
 section {
-	text-align: center;		
+	text-align: center;	
+	overflow: auto;	
 }
 section > div {
     padding: 20px;	
 	display: inline-block;
 }
 #edukia {
-    text-align: left
+    text-align: left;
 }
 table, tr, td {
     border: 1px solid black;
@@ -44,4 +45,12 @@ footer {
 #ErrorMsgs {
     color: #f61;
     font-size: smaller;
+}
+#seeUserQuestions{
+	 display: none; 
+	 height: 25%; 
+	 width:70% ; 
+	 border: 1px solid black; 
+	 background: white;
+	 overflow:auto;"
 }
