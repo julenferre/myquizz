@@ -19,7 +19,7 @@
 		$argazkia = addslashes(file_get_contents($_FILES['argazkia']['tmp_name']));
 	}
 	else {
-		$argazkia = addslashes(file_get_contents("../images/UserIcon.png"));
+		$argazkia = addslashes(file_get_contents("../Irudiak/UserIcon.png"));
 	}
 	
 	if(izenakCheck($izena)&& abizenakCheck($abizenak)&& emailCheck($eposta)&& pasahitzaCheck($pasahitza)&& telefonoaCheck($telefonoa)){	
