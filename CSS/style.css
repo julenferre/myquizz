@@ -46,6 +46,10 @@ footer {
     color: #f61;
     font-size: smaller;
 }
+#galderaKont{
+	text-align: center;
+	background: #0F0;
+}
 #seeUserQuestions{
 	 display: none; 
 	 height: 25%; 

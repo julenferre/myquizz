@@ -13,6 +13,10 @@
 		   media="only screen and (max-width: 480px)"
 		   href="../CSS/smartphone.css" />
 	<script type="text/javascript">	
+		var timer;
+		
+		timer = setInterval(kopuruaEguneratu, 5000);
+		
 		function galderakIkusi(){		
 			xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function(){
@@ -21,8 +25,8 @@
 					document.getElementById("seeUserQuestions").style.display = 'inline-block';
 				}
 			};
-				xhttp.open("GET","userQuestionsQuery.php", true);
-				xhttp.send();
+			xhttp.open("GET","userQuestionsQuery.php", true);
+			xhttp.send();
 		}
 		function galderaBidali(gal,era,gai,zai){	
 			xhttp = new XMLHttpRequest();
@@ -33,9 +37,18 @@
 					document.getElementById("mezuaGaldera").style.display = 'inline-block';
 				}
 			};
-				xhttp.open("GET","insertQuestionQuery.php?"+params, true);
-				xhttp.send();
-			return false;
+			xhttp.open("GET","insertQuestionQuery.php?"+params, true);
+			xhttp.send();
+		}
+		function kopuruaEguneratu(){
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if ((xhttp.readyState==4)&&(xhttp.status==200 )){ 
+					document.getElementById("galderaKont").innerHTML= xhttp.responseText;
+				}
+			};
+			xhttp.open("GET","galderaKopKalkulatu.php", true);
+			xhttp.send();			
 		}
 	</script>
   </head>
@@ -56,6 +69,7 @@
 	</nav>
     <section class="main" id="s1">	
 		<div id="edukia">
+			<p id="galderaKont">Nire galderak / DBko galdera guztiak: 0 / 0</p>
 			<form id="erregistro" name="erregistro" method="post" onsubmit="return galderaBidali(galdera.value,erantzuna.value,gaia.value,zailtasuna.value)">
 				Galdera (*): <br>
 				<textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300" style="resize: none"></textarea><br />
@@ -78,7 +92,7 @@
 			</div><br />
 			<input type="button" id="galderakIkusi" name="galderakIkusi" value="Zure galderak ikusi" onClick="galderakIkusi()" />
 		</div><!--div edukia--><br/>
-		<div id="seeUserQuestions" style="display: none; height: 25%; width:70% ; border: 1px solid black; background: white; overflow:auto;">
+		<div id="seeUserQuestions">
 		</div><!--div seeUserQuestions-->
     </section>
 	<footer class="main" id="f1">
