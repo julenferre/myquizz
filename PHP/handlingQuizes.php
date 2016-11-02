@@ -39,6 +39,7 @@
 			};
 			xhttp.open("GET","insertQuestionQuery.php?"+params, true);
 			xhttp.send();
+			return false;
 		}
 		function kopuruaEguneratu(){
 			xhttp = new XMLHttpRequest();
