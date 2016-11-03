@@ -4,6 +4,9 @@
 	//DDBBra konektatu		
 	include "connect.php";
 	
+	//Datuak sesiotik hartu
+	$_POST = $_SESSION['post'];
+	
 	// Datuak bidali
 	$izena = $_POST['izena'];
 	$abizenak = $_POST['abizenak'];
@@ -15,7 +18,7 @@
 		$espezialitatea = $_POST['espez_besteak'];
 	}
 	$interesak = $_POST['tresnak'];
-	if($_FILES['argazkia']['tmp_name'] !== ""){
+	if(isset($_FILES['argazkia']['tmp_name'])){
 		$argazkia = addslashes(file_get_contents($_FILES['argazkia']['tmp_name']));
 	}
 	else {

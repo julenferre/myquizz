@@ -13,7 +13,7 @@
 		   media='only screen and (max-width: 480px)'
 		   href='../CSS/smartphone.css' />
 	<script> 
-		function iruadiAurrekarga(irudia){
+		function irudiAurrekarga(irudia){
 			document.getElementById('argazkiAurrekarga').style.display = 'inline';
 			document.getElementById('argazkiAurrekarga').src = window.URL.createObjectURL(irudia);
 		}
@@ -23,9 +23,9 @@
   <body>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-      	<span class="right" style="display:inline; float: right;"><a href="signUp.html">Sign Up</a> </span><br/>
-      	<span class="right" style="display:inline; float: right;"><a href="../PHP/signIn.php">Log In</a> </span>
-      	<span class='right' style='display:none; float: right;'><a href='../PHP/logout.php'>LogOut</a> </span>
+      	<span class="right" style="display:inline; float: right;"><a href="signUp.php">Sign Up</a> </span><br/>
+      	<span class="right" style="display:inline; float: right;"><a href="signIn.php">Log In</a> </span>
+      	<span class='right' style='display:none; float: right;'><a href='logout.php'>LogOut</a> </span>
 		<h2>Sign Up</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
@@ -37,7 +37,7 @@
     <section class="main" id="s1">
 	
 	<div id="edukia">
-		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkNagusia()" action="../PHP/enrollWithImage.php" enctype="multipart/form-data" >
+		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkNagusia()" action="./signUp.php" enctype="multipart/form-data" >
 			Izena: 
 			<input type="text" id="izena" name="izena" pattern="([A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/><font color="red">*</font> <br/>
 			Abizenak: 
@@ -60,10 +60,33 @@
 			</div><br/>
 			Interesa duzun teknologiak eta erremintak: <br />
 			<textarea id="tresnak" name="tresnak" style="resize: none; width: 320px; height: 40px"></textarea><br />
-			Argazkia: <input type="file" id="argazkia" name="argazkia" onchange="iruadiAurrekarga(this.files[0])"> <br/>
+			Argazkia: <input type="file" id="argazkia" name="argazkia" onchange="irudiAurrekarga(this.files[0])"> <br/>
 			<img id="argazkiAurrekarga" alt="Argazkia" style="display: none; height: 150px; width:auto" /><br/>
 			<input type="submit" value="Ados" />
-		</form>
+		</form>		
+		<?php
+			if(isset($_POST['eposta'])){
+				//Sesio bat hasten dugu POSTaren datuak bidaltzeko
+				session_start();
+				$_SESSION['post'] = $_POST;
+				
+				//nusoap.php klasea gehitzen dugu
+				require_once(dirname(__FILE__) . '\..'.DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR .'lib'.DIRECTORY_SEPARATOR . 'NuSOAP' . DIRECTORY_SEPARATOR . 'nusoap.php');
+				require_once(dirname(__FILE__) . '\..'.DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR .'lib'.DIRECTORY_SEPARATOR . 'NuSOAP' . DIRECTORY_SEPARATOR . 'class.wsdlcache.php');
+				
+				//soapclient motadun objektua sortzen dugu
+				$soapclient = new nusoap_client( 'http://wsjiparsar.esy.es/webZerbitzuak/egiaztatuMatrikula.php?wsdl', false);
+				
+				//Web-Service-n inplementatu dugun funtzioari dei egiten diogu eta itzultzen diguna inprimatzen dugu
+				$erantzuna = $soapclient->call('egiaztatuE',array($_POST['eposta']));
+				if($erantzuna === 'BAI'){
+					header("Location: enrollWithImage.php");
+				}
+				else{
+					echo "Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik";
+				}
+			}
+		?>		
 	</div>
     </section>
 	<footer class='main' id='f1'>
