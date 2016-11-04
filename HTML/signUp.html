@@ -17,6 +17,26 @@
 			document.getElementById('argazkiAurrekarga').style.display = 'inline';
 			document.getElementById('argazkiAurrekarga').src = window.URL.createObjectURL(irudia);
 		}
+		function checkAll(eposta){	
+			var ongi = false;
+			if(checkNagusia()){
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+					if ((xhttp.readyState==4)&&(xhttp.status==200 )){ 
+						if(xhttp.responseText == "BAI"){
+							//ongi = true;
+						}
+						else{
+							document.getElementById("matrikulatuErantzuna").innerHTML = "Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik";
+						}
+					}
+				};
+				xhttp.open("GET","../PHP/emailaMatrikulatuta.php?eposta=" + eposta, true);
+				xhttp.send();
+			}
+			alert();
+			return ongi;
+		}
 	</script>
 	<script src="../JavaScript/signUp.js"></script> <!--<script></script> horrela jartzea beharrezkoa da-->
   </head>
@@ -37,7 +57,7 @@
     <section class="main" id="s1">
 	
 	<div id="edukia">
-		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkNagusia()" action="./signUp.php" enctype="multipart/form-data" >
+		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkAll(eposta.value)"  enctype="multipart/form-data" >
 			Izena: 
 			<input type="text" id="izena" name="izena" pattern="([A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/><font color="red">*</font> <br/>
 			Abizenak: 
@@ -63,30 +83,8 @@
 			Argazkia: <input type="file" id="argazkia" name="argazkia" onchange="irudiAurrekarga(this.files[0])"> <br/>
 			<img id="argazkiAurrekarga" alt="Argazkia" style="display: none; height: 150px; width:auto" /><br/>
 			<input type="submit" value="Ados" />
-		</form>		
-		<?php
-			if(isset($_POST['eposta'])){
-				//Sesio bat hasten dugu POSTaren datuak bidaltzeko
-				session_start();
-				$_SESSION['post'] = $_POST;
-				
-				//nusoap.php klasea gehitzen dugu
-				require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR .'lib'.DIRECTORY_SEPARATOR . 'NuSOAP' . DIRECTORY_SEPARATOR . 'nusoap.php');
-				require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR .'lib'.DIRECTORY_SEPARATOR . 'NuSOAP' . DIRECTORY_SEPARATOR . 'class.wsdlcache.php');
-				
-				//soapclient motadun objektua sortzen dugu
-				$soapclient = new nusoap_client( 'http://wsjiparsar.esy.es/webZerbitzuak/egiaztatuMatrikula.php?wsdl', false);
-				
-				//Web-Service-n inplementatu dugun funtzioari dei egiten diogu eta itzultzen diguna inprimatzen dugu
-				$erantzuna = $soapclient->call('egiaztatuE',array($_POST['eposta']));
-				if($erantzuna === 'BAI'){
-					header("Location: enrollWithImage.php");
-				}
-				else{
-					echo "Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik";
-				}
-			}
-		?>
+		</form>	
+		<div id="matrikulatuErantzuna"></div>	
 	</div>
     </section>
 	<footer class='main' id='f1'>
