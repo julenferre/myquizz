@@ -24,7 +24,7 @@
 				xhttp.onreadystatechange = function(){
 					if ((xhttp.readyState==4)&&(xhttp.status==200 )){ 
 						if(xhttp.responseText == "BAI"){
-							//ongi = true;
+							ongi = true;
 						}
 						else{
 							document.getElementById("matrikulatuErantzuna").innerHTML = "Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik";
@@ -57,7 +57,7 @@
     <section class="main" id="s1">
 	
 	<div id="edukia">
-		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkAll(eposta.value)"  enctype="multipart/form-data" >
+		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkAll(eposta.value)" action="../PHP/enrollWithImage.php" enctype="multipart/form-data" >
 			Izena: 
 			<input type="text" id="izena" name="izena" pattern="([A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/><font color="red">*</font> <br/>
 			Abizenak: 
