@@ -70,7 +70,7 @@
 	</nav>
     <section class="main" id="s1">	
 		<div id="edukia">
-			<p id="galderaKont">Nire galderak / DBko galdera guztiak: 0 / 0</p>
+			<p id="galderaKont"><script type="text/javascript">kopuruaEguneratu()</script></p>
 			<form id="erregistro" name="erregistro" method="post" onsubmit="return galderaBidali(galdera.value,erantzuna.value,gaia.value,zailtasuna.value)">
 				Galdera (*): <br>
 				<textarea id="galdera" name="galdera" rows="6" cols="50" maxlength="300" style="resize: none"></textarea><br />
