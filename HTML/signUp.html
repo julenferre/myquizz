@@ -12,30 +12,37 @@
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
 		   href='../CSS/smartphone.css' />
-	<script> 
+	<script>
+		var denaOndo = false;
 		function irudiAurrekarga(irudia){
 			document.getElementById('argazkiAurrekarga').style.display = 'inline';
 			document.getElementById('argazkiAurrekarga').src = window.URL.createObjectURL(irudia);
 		}
-		function checkAll(eposta){	
-			var ongi = false;
+		function checkEposta(eposta){
 			if(checkNagusia()){
 				xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function(){
-					if ((xhttp.readyState==4)&&(xhttp.status==200)){ 
+					if ((xhttp.readyState==4)&&(xhttp.status==200)){
 						if(xhttp.responseText == "BAI"){
-							ongi = true;
+							denaOndo = true;
+							document.getElementById("matrikulatuErantzuna").innerHTML = "";
 						}
 						else{
-							document.getElementById("matrikulatuErantzuna").innerHTML = "Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik";
+							document.getElementById("matrikulatuErantzuna").innerHTML = "<font color='red'>Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik</font>";
 						}
 					}
 				};
 				xhttp.open("GET","../PHP/emailaMatrikulatuta.php?eposta=" + eposta, true);
 				xhttp.send();
 			}
-			alert();
-			return ongi;
+			//alert();
+		}
+		function checkAll(){
+			if(!checkNagusia()){
+				denaOndo = false;
+			}
+			//alert(denaOndo);
+			return denaOndo;
 		}
 	</script>
 	<script src="../JavaScript/signUp.js"></script> <!--<script></script> horrela jartzea beharrezkoa da-->
@@ -57,13 +64,13 @@
     <section class="main" id="s1">
 	
 	<div id="edukia">
-		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkAll(eposta.value)" action="../PHP/enrollWithImage.php" enctype="multipart/form-data" >
+		<form id="erregistro" name="erregistro" method="post" onsubmit="return checkAll()" action="../PHP/enrollWithImage.php" enctype="multipart/form-data" >
 			Izena: 
 			<input type="text" id="izena" name="izena" pattern="([A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/><font color="red">*</font> <br/>
 			Abizenak: 
 			<input type="text" id="abizenak" name="abizenak" pattern="([A-Z][a-z]+\s[A-Z][a-z]+)(\s[A-Z][a-z]+)*" required/><font color="red">*</font> <br/>
 			Eposta elektronikoa: 
-			<input type="text" id="eposta" name="eposta" size="25" pattern="[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)" required/><font color="red">*</font><br/>
+			<input type="text" id="eposta" name="eposta" size="25" pattern="[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)" required  onblur="checkEposta(eposta.value)"/><font color="red">*</font><br/>
 			Pasahitza: 
 			<input type="password" id="pasahitza" name="pasahitza" size="25" minlength=6 required/><font color="red">*</font> <br/>
 			Telefono zenbakia: 
