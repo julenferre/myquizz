@@ -4,9 +4,9 @@
 	require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR .'..'.DIRECTORY_SEPARATOR .'lib'.DIRECTORY_SEPARATOR . 'NuSOAP' . DIRECTORY_SEPARATOR . 'class.wsdlcache.php');
 	
 	//soap_server motako objektua sortzen dugu
-	$ns=dirname(__FILE__) . DIRECTORY_SEPARATOR .'..' . DIRECTORY_SEPARATOR 'SOAP' . DIRECTORY_SEPARATOR . 'egiaztatuPasahitza.xml'; //name of the service
+	$ns=dirname(__FILE__) . DIRECTORY_SEPARATOR .'..' . DIRECTORY_SEPARATOR . 'SOAP' . DIRECTORY_SEPARATOR . 'egiaztatuPasahitza.xml'; //name of the service
 	$server = new soap_server;
-	$server->configureWSDL('egiaztatuP',$ns);
+	$server->configureWSDL('egiaztatuP',$ns.'?wsdl');
 	$server->wsdl->schemaTargetNamespace=$ns;
 	
 	//inplementatu nahi dugun funtzioa erregistratzen dugu

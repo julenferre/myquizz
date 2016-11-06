@@ -26,11 +26,11 @@
 					if ((xhttp.readyState==4)&&(xhttp.status==200)){
 						if(xhttp.responseText == "BAI"){
 							emailOndo = true;
-							document.getElementById("matrikulatuErantzuna").style = "display:block";
+							document.getElementById("matrikulatuErantzuna").style = "visibility:visible";
 						}
-						else{
+						else if(xhttp.responseText == "EZ"){
 							emailOndo = false;
-							document.getElementById("matrikulatuErantzuna").style = "display:none";
+							document.getElementById("matrikulatuErantzuna").style = "visibility:none";
 						}
 					}
 				};
@@ -43,17 +43,17 @@
 				xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function(){
 					if ((xhttp.readyState==4)&&(xhttp.status==200)){
-						if(xhttp.responseText == "BAI"){
+						if(xhttp.responseText == "BALIOZKOA"){
 							pasahitzaOndo = true;
-							document.getElementById("pasahitzaOnaErantzuna").style = "display:block";
+							document.getElementById("pasahitzaOnaErantzuna").style = "visibility:visible";
 						}
-						else{
+						else if(xhttp.responseText == "BALIOGABEA"){
 							pasahitzaOndo = false;
-							document.getElementById("pasahitzaOnaErantzuna").style = "display:none";
+							document.getElementById("pasahitzaOnaErantzuna").style = "visibility:none";
 						}
 					}
 				};
-				xhttp.open("GET","../PHP/egiaztatuPasahitza.php?pasahitza=" + pasahitza, true);
+				xhttp.open("GET","../PHP/egiaztatuPasahitzaBezeroa.php?pasahitza=" + pasahitza, true);
 				xhttp.send();
 			}
 		}
@@ -112,8 +112,8 @@
 			<img id="argazkiAurrekarga" alt="Argazkia" style="display: none; height: 150px; width:auto" /><br/>
 			<input type="submit" value="Ados" />
 		</form>	
-		<div id="matrikulatuErantzuna" style="display:none"><font color='red'>Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik</font></div>
-		<div id="pasahitzaOnaErantzuna" style="display:none"><font color='red'>Pasahitza hori ahula da</font></div>		
+		<div id="matrikulatuErantzuna" style="visibility:hidden"><font color='red'>Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik</font></div>
+		<div id="pasahitzaOnaErantzuna" style="visibility:hidden"><font color='red'>Pasahitza hori ahula da</font></div>		
 	</div>
     </section>
 	<footer class='main' id='f1'>
