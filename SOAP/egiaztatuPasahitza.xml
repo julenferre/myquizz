@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://jferrero.esy.es/myquizz-master/PHP/egiaztatuPasahitza.php?wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://jferrero.esy.es/myquizz-master/PHP/egiaztatuPasahitza.php?wsdl">
+	<types>
+		<xsd:schema targetNamespace="http://jferrero.esy.es/myquizz-master/PHP/egiaztatuPasahitza.php?wsdl">
+			<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+		</xsd:schema>
+	</types>
+	<message name="egiaztatuPRequest">
+		<part name="pasahitza" type="xsd:string" />
+	</message>
+	<message name="egiaztatuPResponse">
+		<part name="erantzuna" type="xsd:string" />
+	</message>
+	<portType name="PasahitzakPortType">
+		<operation name="egiaztatuP">
+			<input message="tns:egiaztatuPRequest"/>
+			<output message="tns:egiaztatuPResponse"/>
+		</operation>
+	</portType>
+	<binding name="PasahitzakBinding" type="tns:PasahitzakPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="egiaztatuP">
+			<soap:operation soapAction="http://jferrero.esy.es/myquizz-master/PHP/egiaztatuPasahitza.php/egiaztatuP" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="http://jferrero.esy.es/myquizz-master/PHP/egiaztatuPasahitza.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://jferrero.esy.es/myquizz-master/PHP/egiaztatuPasahitza.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="Pasahitzak">
+		<port name="PasahitzakPort" binding="tns:PasahitzakBinding">
+			<soap:address location="http://jferrero.esy.es/myquizz-master/PHP/egiaztatuPasahitza.php"/>
+		</port>
+	</service>
+</definitions>

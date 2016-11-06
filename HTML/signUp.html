@@ -13,7 +13,8 @@
 		   media='only screen and (max-width: 480px)'
 		   href='../CSS/smartphone.css' />
 	<script>
-		var denaOndo = false;
+		var emailOndo = false;
+		var pasahitzaOndo = false;
 		function irudiAurrekarga(irudia){
 			document.getElementById('argazkiAurrekarga').style.display = 'inline';
 			document.getElementById('argazkiAurrekarga').src = window.URL.createObjectURL(irudia);
@@ -24,10 +25,11 @@
 				xhttp.onreadystatechange = function(){
 					if ((xhttp.readyState==4)&&(xhttp.status==200)){
 						if(xhttp.responseText == "BAI"){
-							denaOndo = true;
+							emailOndo = true;
 							document.getElementById("matrikulatuErantzuna").innerHTML = "";
 						}
 						else{
+							emailOndo = false;
 							document.getElementById("matrikulatuErantzuna").innerHTML = "<font color='red'>Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik</font>";
 						}
 					}
@@ -35,14 +37,33 @@
 				xhttp.open("GET","../PHP/emailaMatrikulatuta.php?eposta=" + eposta, true);
 				xhttp.send();
 			}
-			//alert();
+		}
+		function checkPasahitza(pasahitza){
+			if(checkNagusia()){
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+					if ((xhttp.readyState==4)&&(xhttp.status==200)){
+						if(xhttp.responseText == "BAI"){
+							pasahitzaOndo = true;
+							document.getElementById("pasahitzaOnaErantzuna").innerHTML = "";
+						}
+						else{
+							pasahitzaOndo = false;
+							document.getElementById("pasahitzaOnaErantzuna").innerHTML = "<font color='red'>Pasahitza hori ahula da</font>";
+						}
+					}
+				};
+				xhttp.open("GET","../PHP/egiaztatuPasahitza.php?pasahitza=" + pasahitza, true);
+				xhttp.send();
+			}
 		}
 		function checkAll(){
-			if(!checkNagusia()){
-				denaOndo = false;
+			if(!checkNagusia() || !emailOndo || !pasahitzaOndo){
+				return false;
 			}
-			//alert(denaOndo);
-			return denaOndo;
+			else{
+				return true;
+			}
 		}
 	</script>
 	<script src="../JavaScript/signUp.js"></script> <!--<script></script> horrela jartzea beharrezkoa da-->
@@ -72,7 +93,7 @@
 			Eposta elektronikoa: 
 			<input type="text" id="eposta" name="eposta" size="25" pattern="[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)" required  onblur="checkEposta(eposta.value)"/><font color="red">*</font><br/>
 			Pasahitza: 
-			<input type="password" id="pasahitza" name="pasahitza" size="25" minlength=6 required/><font color="red">*</font> <br/>
+			<input type="password" id="pasahitza" name="pasahitza" size="25" minlength=6 required onblur="checkPasahitza(pasahitza.value)"/><font color="red">*</font> <br/>
 			Telefono zenbakia: 
 			<input type="text" id="telefonoa" name="telefonoa" size="10" pattern="[0-9]{9}" required/><font color="red">*</font> <br/>
 			Espezialitatea: 
@@ -91,7 +112,8 @@
 			<img id="argazkiAurrekarga" alt="Argazkia" style="display: none; height: 150px; width:auto" /><br/>
 			<input type="submit" value="Ados" />
 		</form>	
-		<div id="matrikulatuErantzuna"></div>	
+		<div id="matrikulatuErantzuna"></div>
+		<div id="pasahitzaOnaErantzuna"></div>		
 	</div>
     </section>
 	<footer class='main' id='f1'>
