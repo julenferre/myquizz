@@ -26,11 +26,11 @@
 					if ((xhttp.readyState==4)&&(xhttp.status==200)){
 						if(xhttp.responseText == "BAI"){
 							emailOndo = true;
-							document.getElementById("matrikulatuErantzuna").style = "visibility:visible";
+							document.getElementById("matrikulatuErantzuna").style = "visibility:hidden";
 						}
 						else if(xhttp.responseText == "EZ"){
 							emailOndo = false;
-							document.getElementById("matrikulatuErantzuna").style = "visibility:none";
+							document.getElementById("matrikulatuErantzuna").style = "visibility:visible";
 						}
 					}
 				};
@@ -45,11 +45,11 @@
 					if ((xhttp.readyState==4)&&(xhttp.status==200)){
 						if(xhttp.responseText == "BALIOZKOA"){
 							pasahitzaOndo = true;
-							document.getElementById("pasahitzaOnaErantzuna").style = "visibility:visible";
+							document.getElementById("pasahitzaOnaErantzuna").style = "visibility:hidden";
 						}
 						else if(xhttp.responseText == "BALIOGABEA"){
 							pasahitzaOndo = false;
-							document.getElementById("pasahitzaOnaErantzuna").style = "visibility:none";
+							document.getElementById("pasahitzaOnaErantzuna").style = "visibility:visible";
 						}
 					}
 				};
