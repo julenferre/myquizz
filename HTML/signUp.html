@@ -20,42 +20,38 @@
 			document.getElementById('argazkiAurrekarga').src = window.URL.createObjectURL(irudia);
 		}
 		function checkEposta(eposta){
-			if(checkNagusia()){
-				xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function(){
-					if ((xhttp.readyState==4)&&(xhttp.status==200)){
-						if(xhttp.responseText == "BAI"){
-							emailOndo = true;
-							document.getElementById("matrikulatuErantzuna").style = "visibility:hidden";
-						}
-						else if(xhttp.responseText == "EZ"){
-							emailOndo = false;
-							document.getElementById("matrikulatuErantzuna").style = "visibility:visible";
-						}
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if ((xhttp.readyState==4)&&(xhttp.status==200)){
+					if(xhttp.responseText == "BAI"){
+						emailOndo = true;
+						document.getElementById("matrikulatuErantzuna").style = "display:none";
 					}
-				};
-				xhttp.open("GET","../PHP/emailaMatrikulatuta.php?eposta=" + eposta, true);
-				xhttp.send();
-			}
+					else if(xhttp.responseText == "EZ"){
+						emailOndo = false;
+						document.getElementById("matrikulatuErantzuna").style = "display:inline";
+					}
+				}
+			};
+			xhttp.open("GET","../PHP/emailaMatrikulatuta.php?eposta=" + eposta, true);
+			xhttp.send();
 		}
 		function checkPasahitza(pasahitza){
-			if(checkNagusia()){
-				xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function(){
-					if ((xhttp.readyState==4)&&(xhttp.status==200)){
-						if(xhttp.responseText == "BALIOZKOA"){
-							pasahitzaOndo = true;
-							document.getElementById("pasahitzaOnaErantzuna").style = "visibility:hidden";
-						}
-						else if(xhttp.responseText == "BALIOGABEA"){
-							pasahitzaOndo = false;
-							document.getElementById("pasahitzaOnaErantzuna").style = "visibility:visible";
-						}
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if ((xhttp.readyState==4)&&(xhttp.status==200)){
+					if(xhttp.responseText == "BALIOZKOA"){
+						pasahitzaOndo = true;
+						document.getElementById("pasahitzaOnaErantzuna").style = "display:none";
 					}
-				};
-				xhttp.open("GET","../PHP/egiaztatuPasahitzaBezeroa.php?pasahitza=" + pasahitza, true);
-				xhttp.send();
-			}
+					else if(xhttp.responseText == "BALIOGABEA"){
+						pasahitzaOndo = false;
+						document.getElementById("pasahitzaOnaErantzuna").style = "display:inline";
+					}
+				}
+			};
+			xhttp.open("GET","../PHP/egiaztatuPasahitzaBezeroa.php?pasahitza=" + pasahitza, true);
+			xhttp.send();
 		}
 		function checkAll(){
 			if(!checkNagusia() || !emailOndo || !pasahitzaOndo){
@@ -93,7 +89,7 @@
 			Eposta elektronikoa: 
 			<input type="text" id="eposta" name="eposta" size="25" pattern="[a-zA-z]+[0-9]{3}(@ikasle\.ehu\.e)u?(s)" required  onblur="checkEposta(eposta.value)"/><font color="red">*</font><br/>
 			Pasahitza: 
-			<input type="password" id="pasahitza" name="pasahitza" size="25" minlength=6 required onblur="checkPasahitza(pasahitza.value)"/><font color="red">*</font> <br/>
+			<input type="password" id="pasahitza" name="pasahitza" size="25" pattern=".{6,}" required onblur="checkPasahitza(pasahitza.value)"/><font color="red">*</font> <br/>
 			Telefono zenbakia: 
 			<input type="text" id="telefonoa" name="telefonoa" size="10" pattern="[0-9]{9}" required/><font color="red">*</font> <br/>
 			Espezialitatea: 
@@ -111,9 +107,9 @@
 			Argazkia: <input type="file" id="argazkia" name="argazkia" onchange="irudiAurrekarga(this.files[0])"> <br/>
 			<img id="argazkiAurrekarga" alt="Argazkia" style="display: none; height: 150px; width:auto" /><br/>
 			<input type="submit" value="Ados" />
-		</form>	
-		<div id="matrikulatuErantzuna" style="visibility:hidden"><font color='red'>Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik</font></div>
-		<div id="pasahitzaOnaErantzuna" style="visibility:hidden"><font color='red'>Pasahitza hori ahula da</font></div>		
+		</form>	<br/>
+		<div id="matrikulatuErantzuna" style="display: none"><font color='red'>Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik</font></div><br/>
+		<div id="pasahitzaOnaErantzuna" style="display: none"><font color='red'>Pasahitza hori ahula da</font></div>		
 	</div>
     </section>
 	<footer class='main' id='f1'>
