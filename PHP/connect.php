@@ -13,11 +13,13 @@
 	$ddbbH = "u823979798_quiz";
 	
 	$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
-	//$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
 	
 	//Konexioa konprobatu
 	if (!$conn) {
-		die("Ezin izan da konexioa ezarri: " . $conn->connect_error);
+		$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
+		if (!$conn) {
+			die("Ezin izan da konexioa ezarri: " . $conn->connect_error);
+		}
 	}
 	
 	//Saioa hasi
