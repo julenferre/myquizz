@@ -26,11 +26,11 @@
 					if ((xhttp.readyState==4)&&(xhttp.status==200)){
 						if(xhttp.responseText == "BAI"){
 							emailOndo = true;
-							document.getElementById("matrikulatuErantzuna").innerHTML = "";
+							document.getElementById("matrikulatuErantzuna").style = "display:block";
 						}
 						else{
 							emailOndo = false;
-							document.getElementById("matrikulatuErantzuna").innerHTML = "<font color='red'>Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik</font>";
+							document.getElementById("matrikulatuErantzuna").style = "display:none";
 						}
 					}
 				};
@@ -45,11 +45,11 @@
 					if ((xhttp.readyState==4)&&(xhttp.status==200)){
 						if(xhttp.responseText == "BAI"){
 							pasahitzaOndo = true;
-							document.getElementById("pasahitzaOnaErantzuna").innerHTML = "";
+							document.getElementById("pasahitzaOnaErantzuna").style = "display:block";
 						}
 						else{
 							pasahitzaOndo = false;
-							document.getElementById("pasahitzaOnaErantzuna").innerHTML = "<font color='red'>Pasahitza hori ahula da</font>";
+							document.getElementById("pasahitzaOnaErantzuna").style = "display:none";
 						}
 					}
 				};
@@ -112,8 +112,8 @@
 			<img id="argazkiAurrekarga" alt="Argazkia" style="display: none; height: 150px; width:auto" /><br/>
 			<input type="submit" value="Ados" />
 		</form>	
-		<div id="matrikulatuErantzuna"></div>
-		<div id="pasahitzaOnaErantzuna"></div>		
+		<div id="matrikulatuErantzuna" style="display:none"><font color='red'>Ikasle hau ez dago Web Sistemak irakasgaian matrikulaturik</font></div>
+		<div id="pasahitzaOnaErantzuna" style="display:none"><font color='red'>Pasahitza hori ahula da</font></div>		
 	</div>
     </section>
 	<footer class='main' id='f1'>
