@@ -21,24 +21,19 @@
 	
 	//funtzioa inplementatzen dugu
 	function egiaztatuP($pasahitza){
-		//Flag bat
-		$passTxarra = false;
-	
 		//Fitxategia irakurtzen da eta edukia aldagai batean gordetzen da
-		$fitx = fopen("../Passwords/toppasswords.txt", "r") or die("Unable to open file!");
-		while ((($lerroa = fgets($fitx)) !== false) && !$passTxarra) {
-			if($lerroa == $pasahitza){
-				$passTxarra = true;
+		$fitx = fopen(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Passwords' . DIRECTORY_SEPARATOR . 'toppasswords.txt', "r");
+		while (!feof($fitx)) {
+			$lerroa = fgets($fitx);
+			$lerroa = str_replace("\n", "", $lerroa);
+			$lerroa = str_replace("\r", "", $lerroa);
+			if($lerroa === $pasahitza){
+				return "BALIOGABEA";
 			}
 		}
 		fclose($fitx);
 		
-		if($passTxarra){
-			return "BALIOGABEA";
-		}
-		else{
-			return "BALIOZKOA";
-		}		
+		return "BALIOZKOA";
 	}
 	//nusoap klaseko sevice metodoari dei egiten diogu
 	$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
