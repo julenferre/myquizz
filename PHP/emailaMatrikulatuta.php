@@ -1,7 +1,7 @@
 <?php
 	//nusoap.php klasea gehitzen dugu
-	require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'NuSOAP'.DIRECTORY_SEPARATOR.'nusoap.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'NuSOAP'.DIRECTORY_SEPARATOR.'class.wsdlcache.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'nuSOAP'.DIRECTORY_SEPARATOR.'nusoap.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'nuSOAP'.DIRECTORY_SEPARATOR.'class.wsdlcache.php');
 	
 	//soapclient motadun objektua sortzen dugu
 	$soapclient = new nusoap_client( 'http://wsjiparsar.esy.es/webZerbitzuak/egiaztatuMatrikula.php?wsdl', true);

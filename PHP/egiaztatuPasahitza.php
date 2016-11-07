@@ -1,7 +1,7 @@
 <?php
 	//nusoap.php klasea gehitzen dugu
-	require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'NuSOAP'.DIRECTORY_SEPARATOR.'nusoap.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'NuSOAP'.DIRECTORY_SEPARATOR.'class.wsdlcache.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'nuSOAP'.DIRECTORY_SEPARATOR.'nusoap.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'nuSOAP'.DIRECTORY_SEPARATOR.'class.wsdlcache.php');
 		
 	//soap_server motako objektua sortzen dugu
 	//$ns="http://localhost:1234/myquizz/PHP/egiaztatuPasahitza.php/egiaztatuP"; //name of the service (localhost)
