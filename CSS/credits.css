@@ -27,6 +27,7 @@ body {
 	font-weight: bolder;
 	color: #FFF000;
 	height: 400px;
+	overflow: auto;
 }
 
 div > p {

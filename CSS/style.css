@@ -23,7 +23,8 @@ nav span {
     padding: 1%;
     margin-bottom: 1px;
     color: black;
-    text-align: center;
+    text-align: center;	
+	overflow: auto;
 }
 section {
 	text-align: center;	
@@ -35,6 +36,7 @@ section > div {
 }
 #edukia {
     text-align: left;
+	overflow: auto;
 }
 table, tr, td {
     border: 1px solid black;

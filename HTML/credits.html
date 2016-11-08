@@ -11,7 +11,7 @@
 	<link rel='stylesheet' 
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
-		   href='../CSS/smartphone.css' />
+		   href='../CSS/smartphone.css' />			
   </head>
   <body>
   <div id='page-wrap'>
@@ -28,14 +28,37 @@
 		<span><a href='credits.html'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
-		<div>
+		<div style="overflow:auto">
 			<p>Egileak: Julen Ferrero eta Aimar Ugarte</p>
 			<p>Espezialitatea: Software Ingeniaritza</p>
 			<p>Argazkiak: 
 				<a href="https://git-scm.com/"><img src="../Irudiak/GitIcon.png" /></a>
 				<a href="https://github.com"><img src="../Irudiak/GithubIcon.png" /></a>
 				<a href="https://www.hostinger.es/"><img src="../Irudiak/HostingerIcon.png" /></a>
-			</p>
+			</p><br>
+			<p>GEOLOKALIZAZIOA</p>
+			<input type="button" onclick="kalkulatuLokalizazioa()" value="Lokalizazioa kalkulatu" />
+			<p id="geoBezeroa"> </p>					
+			<p id="geoZerbitzaria"> </p>
+			<script src="http://localhost:1234/myquizz/Javascript/serverGeolocation.js"></script>
+			<script>
+			var bezeroa = document.getElementById("geoBezeroa");
+			var zerbitz = document.getElementById("geoZerbitzaria");
+			function kalkulatuLokalizazioa(){
+				/*BEZEROA*/				
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else {
+					bezeroa.innerHTML = "Geolokalizazioa ez dago eskuragai arakatzaile honetan.";
+				}
+				/*ZERBITZARIA*/
+				zerbPos();
+				zerbitz.innerHTML = getServerPos();
+			}
+			function showPosition(position) {
+				bezeroa.innerHTML = "Zure koordenatuak -> latitudea: " + position.coords.latitude +", longitudea: " + position.coords.longitude
+			}	
+			</script>
 		</div>
     </section>
 	<footer class='main' id='f1'>
