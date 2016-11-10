@@ -49,7 +49,7 @@
 			function kalkulatuLokalizazioa(){
 				bezeroa.innerHTML = "Kalkulatzen...";
 				/*BEZEROA*/				
-				if (navigator.geolocation) {
+				if (navigator.geolocation) { 
 					navigator.geolocation.getCurrentPosition(showPosition);
 				} else {
 					bezeroa.innerHTML = "Geolokalizazioa ez dago eskuragai arakatzaile honetan.";
