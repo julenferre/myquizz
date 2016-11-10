@@ -1,4 +1,3 @@
-//BEZERO MAPA
 function bezeroMapaErakutzi(){
 	maparenDiv = document.getElementById("mapDiv");
 	if(maparenDiv.style.display == "" || maparenDiv.style.display == "none"){
@@ -20,7 +19,6 @@ function myMap() {
 
   	var marker = new google.maps.Marker();
   	
-  	//BEZERO
   	if (navigator.geolocation) {
     	navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
