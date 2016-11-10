@@ -11,7 +11,8 @@
 	<link rel='stylesheet' 
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
-		   href='../CSS/smartphone.css' />			
+		   href='../CSS/smartphone.css' />
+	<script src="../JavaScript/mapaKargatu.js"></script> <!--<script></script> horrela jartzea beharrezkoa da-->
   </head>
   <body>
   <div id='page-wrap'>
@@ -38,13 +39,15 @@
 			</p><br>
 			<p>GEOLOKALIZAZIOA</p>
 			<input type="button" onclick="kalkulatuLokalizazioa()" value="Lokalizazioa kalkulatu" />
-			<p id="geoBezeroa"> </p>					
+			<p id="geoBezeroa"> </p>
+			<div id="mapDiv"><div id="map"> </div></div>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk0qKVhKcmzna-mKVWofRcfsBRyybSKr4&callback=myMap"></script>
 			<p id="geoZerbitzaria"> </p>
-			<script src="http://localhost:1234/myquizz/Javascript/serverGeolocation.js"></script>
 			<script>
 			var bezeroa = document.getElementById("geoBezeroa");
 			var zerbitz = document.getElementById("geoZerbitzaria");
 			function kalkulatuLokalizazioa(){
+				bezeroa.innerHTML = "Kalkulatzen...";
 				/*BEZEROA*/				
 				if (navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(showPosition);
@@ -52,11 +55,22 @@
 					bezeroa.innerHTML = "Geolokalizazioa ez dago eskuragai arakatzaile honetan.";
 				}
 				/*ZERBITZARIA*/
-				zerbPos();
-				zerbitz.innerHTML = getServerPos();
+				if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+				    xmlhttp=new XMLHttpRequest();
+				}
+				else{// code for IE6, IE5
+				    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function(){
+				    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+				        zerbitz.innerHTML = "Zerbitzariaren Lokalizazioa -> " + xmlhttp.responseText;	
+				    }
+				}
+			    xmlhttp.open("GET", "../PHP/serverGeolocation.php", false );
+			    xmlhttp.send();   
 			}
 			function showPosition(position) {
-				bezeroa.innerHTML = "Zure koordenatuak -> latitudea: " + position.coords.latitude +", longitudea: " + position.coords.longitude
+				bezeroa.innerHTML = "Zure koordenatuak -> latitudea: " + position.coords.latitude.toFixed(3) +", longitudea: " + position.coords.longitude.toFixed(3) + "  <a id='BezMapLink' title='Mapan ikusi' href='#'' onclick='bezeroMapaErakutzi();return false;'>Mapa</a>";
 			}	
 			</script>
 		</div>

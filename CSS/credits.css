@@ -63,7 +63,18 @@ nav span {
 	font-size: smaler
 }
 
-img {
+a > img {
 	background-color: #FABADA;
 	height: 100px; width: 100px;
+}
+
+#map {
+	 margin:auto;
+    height: 300px;
+    width: 40%;
+}
+
+#mapDiv {
+	text-align: center;
+    display: none;
 }
