@@ -45,6 +45,9 @@ function checkNagusia() {
             break;
         }
     }
+    if(!pasaitzaBaieztatu()){
+         balioDu = false;
+    }
 	return balioDu;
 }
 function ikusBalioak() {
@@ -81,6 +84,15 @@ function telefonoaCheck() {
     var tl = document.getElementById("telefonoa").value;	
 	var tlfRE = /[0-9]{9}$/;
 	return (tl.length == 9 && tlfRE.test(tl));
+}
+function pasaitzaBaieztatu(){
+    pass = document.getElementById("pasahitza");
+    passBaieztatu = document.getElementById("pasahitzaErrepikatu"); 
+    if(pass.value != passBaieztatu.value){
+        alert("Pasahitzak ez du kointziditzen");
+        return false;
+    }
+    return true;
 }
 function espezBesteakIkusi() {
 	if(document.getElementById("espezialitatea").value=="Besteak"){
