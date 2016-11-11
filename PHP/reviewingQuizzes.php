@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-	<title>XML galderak ikusi</title>
+	<title>Quiz</title>
     <link rel='stylesheet' type='text/css' href='../CSS/style.css' />
 	<link rel='stylesheet' 
 		   type='text/css' 
@@ -11,7 +11,7 @@
 	<link rel='stylesheet' 
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
-		   href='../CSS/smartphone.css' />
+		   href='../CSS/smartphone.css' />		   
   </head>
   <body>
   <div id='page-wrap'>
@@ -19,7 +19,7 @@
       	<span class="right" style="display:inline; float: right;"><a href="../HTML/signUp.html">Sign Up</a> </span><br/>
       	<span class="right" style="display:inline; float: right;"><a href="signIn.php">Log In</a> </span>
 		<span class="right" style="display:none; float: right;"><a href="logout.php">LogOut</a> </span>
-		<h2>XML galderak ikusi</h2>
+		<h2>Reviewing Questions</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
 		<span><a href='../HTML/layout.html'>Home</a></span>
@@ -28,20 +28,17 @@
 		<span><a href='../HTML/credits.html'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
-	<div id="edukia">
-		<table>
-		<tr><td><b>Galdera</b></td><td><b>Konplexutasuna</b></td><td><b>Gaia</b></td></tr>	
+	<div id="edukia" style="height: 55%; border: 1px solid black; background: white; overflow:auto;">
 		<?php
-			$galderak = simplexml_load_file('../XML/galderak.xml');
-			foreach ($galderak->xpath('//assessmentItem') as $galdera)
-			{				
-				foreach ($galdera->itemBody as $enuntziatua)
-				{ 
-					echo utf8_decode("<tr><td>$enuntziatua->p</td><td>$galdera[complexity]</td><td>$galdera[subject]</td></tr>");
-				}				
-			}
+			include "questionsQuery.php";
 		?>
-		</table>
+	</div>
+	<div id="EdukiEstekak">
+		<p>XML galderak taulan ikusteko (PHP), <a href="seeXMLquestions.php">klikatu hemen</a> (Derrigorrezko zatia)</p>
+		<br><br>
+		<p>XML galderak taulan ikusteko (XSL), <a href="../XML/galderak.xml">klikatu hemen</a> (Hautazko zatia)</p>
+		<br><br>
+		<p>Galdera berriak sartzeko, <a href="signIn.php">identifikatu zaitez</a></p>
 	</div>
     </section>
 	<footer class='main' id='f1'>
