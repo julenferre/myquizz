@@ -44,7 +44,7 @@
 					$eposta = $_POST['eposta'];
 					$pasahitza = $_POST['pasahitza'];
 
-					$query = "SELECT Pasahitza FROM erabiltzaile WHERE Eposta='$eposta'";
+					$query = "SELECT Pasahitza, Espezialitatea FROM erabiltzaile WHERE Eposta='$eposta'";
 
 					$erantzuna = $conn->query($query);
 
@@ -64,9 +64,14 @@
 										$_SESSION['konexio_id'] = $lerroa['id'];
 									}
 								}
-								//Galdera sartzera pasatzen gara
-								//header("Location: insertQuestion.php");
-								header("Location: handlingQuizes.php");
+								if($lerroa["Pasahitza"]==="Irakaslea"){
+									header("Location: (reviewingQuizes.php");
+								}
+								else{
+									//Galdera sartzera pasatzen gara
+									//header("Location: insertQuestion.php");
+									header("Location: handlingQuizes.php");
+								}
 								exit;
 							}
 							else{
