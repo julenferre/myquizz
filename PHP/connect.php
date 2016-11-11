@@ -15,7 +15,7 @@
 	$conn = new mysqli($serverH, $userH, $passH, $ddbbH); //HOSTINGER
 	
 	//Konexioa konprobatu
-	if (!$conn) {
+	if ($conn->connect_error) {
 		$conn = new mysqli($servername, $username, $password, $ddbb); //LOCALHOST
 		if (!$conn) {
 			die("Ezin izan da konexioa ezarri: " . $conn->connect_error);
