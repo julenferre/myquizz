@@ -11,7 +11,34 @@
 	<link rel='stylesheet' 
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
-		   href='../CSS/smartphone.css' />		   
+		   href='../CSS/smartphone.css' />
+	<script>
+		function eguneratuGaldera(zbk){
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if ((xhttp.readyState==4)&&(xhttp.status==200)){
+					alert(xhttp.responseText);
+				}
+			};
+			xhttp.open("GET","../PHP/updateQuestionQuery.php", true);
+			xhttp.send();
+		}
+		function ezabatuGaldera(zbk){
+			var form = document.getElementById('form'+zbk);
+			form.getElementById('ekintza').value='Ezabatu';
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if ((xhttp.readyState==4)&&(xhttp.status==200)){
+					alert(xhttp.responseText);
+					if(xhttp.responseText == "Galdera ondo ezabatu da"){
+						location.reload();
+					}
+				}
+			};
+			xhttp.open("GET","../PHP/updateQuestionQuery.php", true);
+			xhttp.send();
+		}
+	</script>
   </head>
   <body>
   <div id='page-wrap'>
@@ -30,15 +57,8 @@
     <section class="main" id="s1">
 	<div id="edukia" style="height: 55%; border: 1px solid black; background: white; overflow:auto;">
 		<?php
-			include "questionsQuery.php";
+			include "editQuestion.php";
 		?>
-	</div>
-	<div id="EdukiEstekak">
-		<p>XML galderak taulan ikusteko (PHP), <a href="seeXMLquestions.php">klikatu hemen</a> (Derrigorrezko zatia)</p>
-		<br><br>
-		<p>XML galderak taulan ikusteko (XSL), <a href="../XML/galderak.xml">klikatu hemen</a> (Hautazko zatia)</p>
-		<br><br>
-		<p>Galdera berriak sartzeko, <a href="signIn.php">identifikatu zaitez</a></p>
 	</div>
     </section>
 	<footer class='main' id='f1'>
