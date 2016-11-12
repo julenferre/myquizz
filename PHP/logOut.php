@@ -3,5 +3,6 @@
    
    if(session_destroy()) {
       header("Location: ../HTML/layout.html");
+      exit();
    }
 ?>

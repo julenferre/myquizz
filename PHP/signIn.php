@@ -65,7 +65,7 @@
 									}
 								}
 								if($lerroa["Pasahitza"]==="Irakaslea"){
-									header("Location: (reviewingQuizes.php");
+									header("Location: reviewingQuizes.php");
 								}
 								else{
 									//Galdera sartzera pasatzen gara

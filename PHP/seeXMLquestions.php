@@ -16,9 +16,10 @@
   <body>
   <div id='page-wrap'>
 	<header class='main' id='h1'>
-      	<span class="right" style="display:inline; float: right;"><a href="../HTML/signUp.html">Sign Up</a> </span><br/>
-      	<span class="right" style="display:inline; float: right;"><a href="signIn.php">Log In</a> </span>
-		<span class="right" style="display:none; float: right;"><a href="logout.php">LogOut</a> </span>
+		<?php
+			include "sesioaKonprobatu.php";
+			eremuArrunta();
+		?>      
 		<h2>XML galderak ikusi</h2>
     </header>
 	<nav class='main' id='n1' role='navigation'>
