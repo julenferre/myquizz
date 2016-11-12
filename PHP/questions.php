@@ -36,10 +36,17 @@
 	</div>
 	<div id="EdukiEstekak">
 		<p>XML galderak taulan ikusteko (PHP), <a href="seeXMLquestions.php">klikatu hemen</a> (Derrigorrezko zatia)</p>
-		<br><br>
+		<br>
 		<p>XML galderak taulan ikusteko (XSL), <a href="../XML/galderak.xml">klikatu hemen</a> (Hautazko zatia)</p>
-		<br><br>
-		<p>Galdera berriak sartzeko, <a href="signIn.php">identifikatu zaitez</a></p>
+		<br>
+		<?php
+			if(isset($_SESSION['login_user'])){
+				echo "<input type='button' class='galderaGehituBotoia' onClick=\"location.href='handlingQuizes.php'\" value='Galdera gehitu'></input>";
+			}
+			else{
+				echo "<p>Galdera berriak sartzeko, <a href='signIn.php'>identifikatu zaitez</a></p>";
+			}
+		?>
 	</div>
     </section>
 	<footer class='main' id='f1'>

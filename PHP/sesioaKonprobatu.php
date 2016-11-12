@@ -4,7 +4,12 @@
 
 	function eremuBabestua(){
 		if(isset($_SESSION['login_user'])){
-			echo "<span class='right' style='display:inline; float: right;'><a href='#'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+			if($_SESSION['espezialitatea']==="Irakaslea"){
+				echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+			}
+			else{
+				echo "<span class='right' style='display:inline; float: right;'><a href='handlingQuizes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+			}
 			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
 		}
 		else{
@@ -15,7 +20,12 @@
 
 	function eremuArrunta(){
 		if(isset($_SESSION['login_user'])){
-			echo "<span class='right' style='display:inline; float: right;'><a href='#'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+			if($_SESSION['espezialitatea']==="Irakaslea"){
+				echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+			}
+			else{
+				echo "<span class='right' style='display:inline; float: right;'><a href='handlingQuizes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+			}
 			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
 		}
 		else{
@@ -26,6 +36,17 @@
 
 	function blokeatuSarreta(){
 		if(!isset($_SESSION['login_user'])){
+			header("Location: ../HTML/layout.html");
+			exit();
+		}
+	}
+
+	function irakasleEremua(){
+		if(isset($_SESSION['login_user']) && $_SESSION['espezialitatea']==="Irakaslea"){
+			echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
+		}
+		else{
 			header("Location: ../HTML/layout.html");
 			exit();
 		}

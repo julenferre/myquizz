@@ -53,6 +53,7 @@
 						if($lerroa["Pasahitza"]===$pasahitza){
 							//Sesioaren erabiltzailearen izena bere eposta izango da
 							$_SESSION['login_user'] = $eposta;
+							$_SESSION['espezialitatea'] = $lerroa['Espezialitatea'];
 							//konexioak taulan erregistro berria sartzen dugu
 							$data = date('Y/m/d H:i:s');
 							$query = "INSERT INTO konexioak VALUES ('','$eposta','$data')";
@@ -64,8 +65,8 @@
 										$_SESSION['konexio_id'] = $lerroa['id'];
 									}
 								}
-								if($lerroa["Pasahitza"]==="Irakaslea"){
-									header("Location: reviewingQuizes.php");
+								if($_SESSION['espezialitatea']=="Irakaslea"){
+									header("Location: reviewingQuizzes.php");
 								}
 								else{
 									//Galdera sartzera pasatzen gara

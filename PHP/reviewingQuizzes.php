@@ -43,7 +43,7 @@
 	<header class='main' id='h1'>
 		<?php
 			include "sesioaKonprobatu.php";
-			eremuBabestua();
+			irakasleEremua();
 		?>
 		<h2>Reviewing Questions</h2>
     </header>
