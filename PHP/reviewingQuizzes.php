@@ -13,29 +13,27 @@
 		   media='only screen and (max-width: 480px)'
 		   href='../CSS/smartphone.css' />
 	<script>
-		function eguneratuGaldera(zbk){
+		function eguneratuGaldera(zbk,gal,era,gai,mai){			
 			xhttp = new XMLHttpRequest();
+			var params = "zenbakia="+zbk+"&galdera="+gal+"&erantzuna="+era+"&gaia="+gai+"&maila="+mai+"&ekintza=Eguneratu";
 			xhttp.onreadystatechange = function(){
 				if ((xhttp.readyState==4)&&(xhttp.status==200)){
 					alert(xhttp.responseText);
 				}
 			};
-			xhttp.open("GET","../PHP/updateQuestionQuery.php", true);
+			xhttp.open("GET","updateQuestionQuery.php?"+params, true);
 			xhttp.send();
+			return false;
 		}
 		function ezabatuGaldera(zbk){
-			var form = document.getElementById('form'+zbk);
-			form.getElementById('ekintza').value='Ezabatu';
 			xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function(){
 				if ((xhttp.readyState==4)&&(xhttp.status==200)){
 					alert(xhttp.responseText);
-					if(xhttp.responseText == "Galdera ondo ezabatu da"){
-						location.reload();
-					}
+					location.reload();
 				}
 			};
-			xhttp.open("GET","../PHP/updateQuestionQuery.php", true);
+			xhttp.open("GET","updateQuestionQuery.php?zenbakia="+zbk+"&ekintza=Ezabatu", true);
 			xhttp.send();
 		}
 	</script>
@@ -55,11 +53,11 @@
 		<span><a href='../HTML/credits.html'>Credits</a></span>
 	</nav>
     <section class="main" id="s1">
-	<div id="edukia" style="height: 55%; border: 1px solid black; background: white; overflow:auto;">
-		<?php
-			include "editQuestion.php";
-		?>
-	</div>
+		<div id="edukia">
+			<?php
+				include "editQuestionsQuery.php";
+			?>
+		</div>
     </section>
 	<footer class='main' id='f1'>
 		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
