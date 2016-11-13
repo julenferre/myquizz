@@ -5,10 +5,10 @@
 	function eremuBabestua(){
 		if(isset($_SESSION['login_user'])){
 			if($_SESSION['espezialitatea']==="Irakaslea"){
-				echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+				echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . explode('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
 			}
 			else{
-				echo "<span class='right' style='display:inline; float: right;'><a href='handlingQuizes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+				echo "<span class='right' style='display:inline; float: right;'><a href='handlingQuizes.php'>" . explode('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
 			}
 			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
 		}
@@ -21,10 +21,10 @@
 	function eremuArrunta(){
 		if(isset($_SESSION['login_user'])){
 			if($_SESSION['espezialitatea']==="Irakaslea"){
-				echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+				echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . explode('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
 			}
 			else{
-				echo "<span class='right' style='display:inline; float: right;'><a href='handlingQuizes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+				echo "<span class='right' style='display:inline; float: right;'><a href='handlingQuizes.php'>" . explode('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
 			}
 			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
 		}
@@ -43,7 +43,7 @@
 
 	function irakasleEremua(){
 		if(isset($_SESSION['login_user']) && $_SESSION['espezialitatea']==="Irakaslea"){
-			echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . split('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
+			echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . explode('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
 			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
 		}
 		else{
