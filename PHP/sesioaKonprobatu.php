@@ -10,7 +10,7 @@
 			else{
 				echo "<span class='right' style='display:inline; float: right;'><a href='handlingQuizes.php'>" . explode('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
 			}
-			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
+			echo "<span class='right' style='display:inline; float: right;'><a href='logOut.php'>LogOut</a> </span>";
 		}
 		else{
 			header("Location: ../HTML/layout.html");
@@ -26,7 +26,7 @@
 			else{
 				echo "<span class='right' style='display:inline; float: right;'><a href='handlingQuizes.php'>" . explode('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
 			}
-			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
+			echo "<span class='right' style='display:inline; float: right;'><a href='logOut.php'>LogOut</a> </span>";
 		}
 		else{
 			echo "<span class='right' style='display:inline; float: right;'><a href='../HTML/signUp.html'>Sign Up</a> </span><br/>";
@@ -44,7 +44,7 @@
 	function irakasleEremua(){
 		if(isset($_SESSION['login_user']) && $_SESSION['espezialitatea']==="Irakaslea"){
 			echo "<span class='right' style='display:inline; float: right;'><a href='reviewingQuizzes.php'>" . explode('@', $_SESSION['login_user'])[0] . "</a></span><br/>";
-			echo "<span class='right' style='display:inline; float: right;'><a href='logout.php'>LogOut</a> </span>";
+			echo "<span class='right' style='display:inline; float: right;'><a href='logOut.php'>LogOut</a> </span>";
 		}
 		else{
 			header("Location: ../HTML/layout.html");
