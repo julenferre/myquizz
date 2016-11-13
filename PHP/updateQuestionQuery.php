@@ -8,7 +8,7 @@
 	if($_GET['ekintza']==='Ezabatu'){
 		$query = "DELETE FROM galderak WHERE zenbakia=$zenbakia";
 	}
-	else if(galderaCheck($galdera) && erantzunaCheck($erantzuna)){
+	else if(galderaCheck($_GET['galdera']) && erantzunaCheck($_GET['erantzuna'])){
 		$galdera = $_GET['galdera'];
 		$erantzuna = $_GET['erantzuna'];
 		$gaia = $_GET['gaia'];
