@@ -44,6 +44,8 @@
 					// Datuak bidali
 					$eposta = $_POST['eposta'];
 					$pasahitza = $_POST['pasahitza'];
+					$encpas = sha1($pasahitza);
+					$encpas2 = substr($encpas,0,-10);
 
 					$query = "SELECT Pasahitza, Espezialitatea FROM erabiltzaile WHERE Eposta='$eposta'";
 
@@ -51,7 +53,9 @@
 
 					if ($erantzuna->num_rows > 0) {
 						$lerroa = $erantzuna->fetch_assoc();
-						if($lerroa["Pasahitza"]===$pasahitza){
+						echo "Pass:.......".$encpas2."<br>";
+						echo "DBPass:..".$lerroa["Pasahitza"]."<br>";
+						if($lerroa["Pasahitza"]===$encpas2){
 							//Sesioaren erabiltzailearen izena bere eposta izango da
 							$_SESSION['login_user'] = $eposta;
 							$_SESSION['espezialitatea'] = $lerroa['Espezialitatea'];

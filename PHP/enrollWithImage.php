@@ -23,7 +23,8 @@
 	}
 	
 	if(izenakCheck($izena)&& abizenakCheck($abizenak)&& emailCheck($eposta)&& pasahitzaCheck($pasahitza)&& telefonoaCheck($telefonoa)){	
-		$query = "INSERT INTO erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$pasahitza', '$telefonoa', '$espezialitatea', '$interesak', '$argazkia');";
+		$encpass = sha1($pasahitza);
+		$query = "INSERT INTO erabiltzaile VALUES ('$izena', '$abizenak', '$eposta', '$encpass', '$telefonoa', '$espezialitatea', '$interesak', '$argazkia');";
 
 		if($conn->query($query) === TRUE) {
 			echo "<h2>Datuak ondo sartu dira</h2> <br><a href='showUsersWithImage.php'> Datuak ikusi </a><br><a href='../HTML/layout.html'> MyQuizz-era bueltatu </a>";
