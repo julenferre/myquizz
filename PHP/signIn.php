@@ -87,7 +87,7 @@
 							$_SESSION['LogSaiakera'] += 1;
 							$saiakerakFaltan = 3 - $_SESSION['LogSaiakera'];
 							if($_SESSION['LogSaiakera']<=3){
-								$query = "UPDATE Erabiltzailea SET blokeatuta='TRUE'";
+								$query = "UPDATE Erabiltzailea SET blokeatuta='TRUE' WHERE Eposta=$eposta";
 							}
 							else{
 								echo "<br/><br/><font color='red'>Pasahitza okerra. ". $saiakerakFaltan ." geratzen zaizkizu.</font>";
