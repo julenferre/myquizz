@@ -66,8 +66,11 @@
 
 							if ($erantzuna->num_rows > 0) {
 								$lerroa = $erantzuna->fetch_assoc();
-								echo $encpas2;
-								if($lerroa["Pasahitza"]===$encpas2){
+								
+								$encpasErantzuna = sha1($lerroa["Pasahitza"]);
+								$encpas2Erantzuna = substr($encpasErantzuna,0,-10);
+
+								if($encpas2Erantzuna===$encpas2){
 									//Sesioaren erabiltzailearen izena bere eposta izango da
 									$_SESSION['login_user'] = $eposta;
 									$_SESSION['espezialitatea'] = $lerroa['Espezialitatea'];
