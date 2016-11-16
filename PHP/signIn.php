@@ -41,6 +41,7 @@
 				if(isset($_POST['eposta'])){
 					//DDBBra konektatu		
 					include "connect.php";
+					$_SESSION['LogSaiakera'] = 0;
 					// Datuak bidali
 					$eposta = $_POST['eposta'];
 					$pasahitza = $_POST['pasahitza'];
@@ -83,7 +84,14 @@
 							}
 						}
 						else{
-							echo "<br/><br/><font color='red'>Pasahitza okerra</font>";
+							$_SESSION['LogSaiakera'] += 1;
+							$saiakerakFaltan = 3 - $_SESSION['LogSaiakera'];
+							if($_SESSION['LogSaiakera']<=3){
+								$query = "UPDATE Erabiltzailea SET blokeatuta='TRUE'";
+							}
+							else{
+								echo "<br/><br/><font color='red'>Pasahitza okerra. ". $saiakerakFaltan ." geratzen zaizkizu.</font>";
+							}
 						}
 					}
 					else{
