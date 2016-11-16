@@ -53,8 +53,6 @@
 
 					if ($erantzuna->num_rows > 0) {
 						$lerroa = $erantzuna->fetch_assoc();
-						echo "Pass:.......".$encpas2."<br>";
-						echo "DBPass:..".$lerroa["Pasahitza"]."<br>";
 						if($lerroa["Pasahitza"]===$encpas2){
 							//Sesioaren erabiltzailearen izena bere eposta izango da
 							$_SESSION['login_user'] = $eposta;
