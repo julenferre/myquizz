@@ -41,63 +41,82 @@
 				if(isset($_POST['eposta'])){
 					//DDBBra konektatu		
 					include "connect.php";
-					$_SESSION['LogSaiakera'] = 0;
-					// Datuak bidali
 					$eposta = $_POST['eposta'];
-					$pasahitza = $_POST['pasahitza'];
-					$encpas = sha1($pasahitza);
-					$encpas2 = substr($encpas,0,-10);
-
-					$query = "SELECT Pasahitza, Espezialitatea FROM erabiltzaile WHERE Eposta='$eposta'";
-
+					$query = "SELECT Blokeatuta FROM erabiltzaile WHERE Eposta='$eposta'";
 					$erantzuna = $conn->query($query);
-
 					if ($erantzuna->num_rows > 0) {
 						$lerroa = $erantzuna->fetch_assoc();
-						if($lerroa["Pasahitza"]===$encpas2){
-							//Sesioaren erabiltzailearen izena bere eposta izango da
-							$_SESSION['login_user'] = $eposta;
-							$_SESSION['espezialitatea'] = $lerroa['Espezialitatea'];
-							//konexioak taulan erregistro berria sartzen dugu
-							$data = date('Y/m/d H:i:s');
-							$query = "INSERT INTO konexioak VALUES ('','$eposta','$data')";
-							if($conn->query($query) === TRUE) {
-								$query = "SELECT id FROM konexioak WHERE erab_eposta='$eposta' and ordua='$data'";
-								$erantzuna = $conn->query($query);
-								if ($erantzuna->num_rows > 0) {
-									while($lerroa = $erantzuna->fetch_assoc()) {
-										$_SESSION['konexio_id'] = $lerroa['id'];
-									}
-								}
-								if($_SESSION['espezialitatea']=="Irakaslea"){
-									header("Location: reviewingQuizzes.php");
-								}
-								else{
-									//Galdera sartzera pasatzen gara
-									//header("Location: insertQuestion.php");
-									header("Location: handlingQuizes.php");
-								}
-								exit;
-							}
-							else{
-								echo "<h2>Datuak ez dira sartu: " . $query . "</h2><br>" . $conn->error;
-							}
+						if($lerroa['Blokeatuta']==1){
+							echo "<br/><br/><font color='red'>Erabiltzailea blokeatuta dago.</font>";
 						}
 						else{
-							$_SESSION['LogSaiakera'] += 1;
-							$saiakerakFaltan = 3 - $_SESSION['LogSaiakera'];
-							if($_SESSION['LogSaiakera']<=3){
-								$query = "UPDATE Erabiltzailea SET blokeatuta='TRUE' WHERE Eposta=$eposta";
+							if(!isset($_SESSION['SaiakeraEmail']) || $_SESSION['SaiakeraEmail']!=$_POST['eposta']){
+								$_SESSION['SaiakeraEmail'] = $_POST['eposta'];
+								$_SESSION['LogSaiakera'] = 0;
+							}
+							// Datuak bidali
+							$eposta = $_POST['eposta'];
+							$pasahitza = $_POST['pasahitza'];
+							$encpas = sha1($pasahitza);
+							$encpas2 = substr($encpas,0,-10);
+
+							$query = "SELECT Pasahitza, Espezialitatea FROM erabiltzaile WHERE Eposta='$eposta'";
+
+							$erantzuna = $conn->query($query);
+
+							if ($erantzuna->num_rows > 0) {
+								$lerroa = $erantzuna->fetch_assoc();
+								echo $encpas2;
+								if($lerroa["Pasahitza"]===$encpas2){
+									//Sesioaren erabiltzailearen izena bere eposta izango da
+									$_SESSION['login_user'] = $eposta;
+									$_SESSION['espezialitatea'] = $lerroa['Espezialitatea'];
+									//konexioak taulan erregistro berria sartzen dugu
+									$data = date('Y/m/d H:i:s');
+									$query = "INSERT INTO konexioak VALUES ('','$eposta','$data')";
+									if($conn->query($query) === TRUE) {
+										$query = "SELECT id FROM konexioak WHERE erab_eposta='$eposta' and ordua='$data'";
+										$erantzuna = $conn->query($query);
+										if ($erantzuna->num_rows > 0) {
+											while($lerroa = $erantzuna->fetch_assoc()) {
+												$_SESSION['konexio_id'] = $lerroa['id'];
+											}
+										}
+										if($_SESSION['espezialitatea']=="Irakaslea"){
+											header("Location: reviewingQuizzes.php");
+										}
+										else{
+											//Galdera sartzera pasatzen gara
+											//header("Location: insertQuestion.php");
+											header("Location: handlingQuizes.php");
+										}
+										exit;
+									}
+									else{
+										echo "<h2>Datuak ez dira sartu: " . $query . "</h2><br>" . $conn->error;
+									}
+								}
+								else{
+									$_SESSION['LogSaiakera'] += 1;
+									$saiakerakFaltan = 3 - $_SESSION['LogSaiakera'];
+									if($_SESSION['LogSaiakera']>=3){
+										echo "blokeatzen";
+										$query = "UPDATE Erabiltzaile SET Blokeatuta='1' WHERE Eposta='$eposta'";
+										$conn->query($query);
+									}
+									else{
+										echo "<br/><br/><font color='red'>Pasahitza okerra. ". $saiakerakFaltan ." saiakera geratzen zaizkizu.</font>";
+									}
+								}
 							}
 							else{
-								echo "<br/><br/><font color='red'>Pasahitza okerra. ". $saiakerakFaltan ." geratzen zaizkizu.</font>";
+								echo "<br/><br/><font color='red'>Erabiltzaile okerra</font>";
 							}
 						}
 					}
 					else{
 						echo "<br/><br/><font color='red'>Erabiltzaile okerra</font>";
 					}
-
 					$conn->close();
 				};
 			?>
