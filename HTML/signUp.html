@@ -70,8 +70,7 @@
 			};
 			xhttp.open("GET","../PHP/egiaztatuPasahitzaBezeroa.php?pasahitza=" + pasahitza, true);
 			xhttp.send();
-		}
-		
+		}		
 		function checkAll(){
 			if(!checkNagusia() || !emailOndo || !ticketaOndo || !pasahitzaOndo){
 				return false;
@@ -112,7 +111,7 @@
 			Pasahitza: 
 			<input type="password" id="pasahitza" name="pasahitza" size="25"  pattern=".{6,}" required onblur="checkPasahitza(pasahitza.value)"/><font color="red">*</font> <br/>
 			Pasahitza errepikatu: 
-			<input type="password" id="pasahitzaErrepikatu" name="pasahitzaErrepikatu" size="25" required/><font color="red">*</font> <br/>
+			<input type="password" id="pasahitzaErrepikatu" name="pasahitzaErrepikatu" size="25" required onblur="pasahitzaBaieztatu()" /><font color="red">*</font> <br/>
 			Telefono zenbakia: 
 			<input type="text" id="telefonoa" name="telefonoa" size="10" pattern="[0-9]{9}" required/><font color="red">*</font> <br/>
 			Espezialitatea: 

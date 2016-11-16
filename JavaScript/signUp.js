@@ -85,7 +85,7 @@ function telefonoaCheck() {
 	var tlfRE = /[0-9]{9}$/;
 	return (tl.length == 9 && tlfRE.test(tl));
 }
-function pasaitzaBaieztatu(){
+function pasahitzaBaieztatu(){
     pass = document.getElementById("pasahitza");
     passBaieztatu = document.getElementById("pasahitzaErrepikatu"); 
     if(pass.value != passBaieztatu.value){

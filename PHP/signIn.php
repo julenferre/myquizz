@@ -33,7 +33,7 @@
 			<form id="erregistro" name="erregistro" method="post" action="./signIn.php" >
 				Eposta elektronikoa (*):<input type="text" id="eposta" name="eposta" size="40"><br />
 				Pasahitza(*):<input type="password" id="pasahitza" name="pasahitza" size="40"><br/>
-				(<a href="">Pasahitza ahaztu egin dut.</a>)<br /><br />
+				(<a href="pasahitzaAldatu.php">Pasahitza ahaztu egin dut.</a>)<br /><br />
 				<input type="submit" value="Ados" /><br /><br />
 				<a href="../HTML/layout.html">Orrialde nagusira bueltatu</a> 
 			</form>
