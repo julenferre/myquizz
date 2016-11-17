@@ -39,6 +39,8 @@
 			</form>
 			<?php
 				if(isset($_POST['eposta'])){
+					//Blokeo denbora
+					$blokeoMinutuak = 5;
 					//DDBBra konektatu		
 					include "connect.php";
 					$eposta = $_POST['eposta'];
@@ -46,8 +48,10 @@
 					$erantzuna = $conn->query($query);
 					if ($erantzuna->num_rows > 0) {
 						$lerroa = $erantzuna->fetch_assoc();
-						if($lerroa['Blokeatuta']==1){
-							echo "<br/><br/><font color='red'>Erabiltzailea blokeatuta dago.</font>";
+						$blokeatutakoDenbora = time() - $lerroa['Blokeatuta'];
+						//if($lerroa['Blokeatuta']==1){
+						if($blokeatutakoDenbora < $blokeoMinutuak*60){
+							echo "<br/><br/><font color='red'>Erabiltzailea blokeatuta dago.<br>Desblokeatzeko ".($blokeoMinutuak*60 - $blokeatutakoDenbora)." segundu falta dira.</font>";
 						}
 						else{
 							if(!isset($_SESSION['SaiakeraEmail']) || $_SESSION['SaiakeraEmail']!=$_POST['eposta']){
@@ -103,9 +107,10 @@
 									$_SESSION['LogSaiakera'] += 1;
 									$saiakerakFaltan = 3 - $_SESSION['LogSaiakera'];
 									if($_SESSION['LogSaiakera']>=3){
-										echo "blokeatzen";
-										$query = "UPDATE Erabiltzaile SET Blokeatuta='1' WHERE Eposta='$eposta'";
-										$conn->query($query);
+										$orain = time();
+										$query = "UPDATE Erabiltzaile SET Blokeatuta='$orain' WHERE Eposta='$eposta'";
+										$conn->query($query);										
+										echo "<font color='red'>Erabiltzailea blokeatu da ".$blokeoMinutuak." minutuz.</font>";
 									}
 									else{
 										echo "<br/><br/><font color='red'>Pasahitza okerra. ". $saiakerakFaltan ." saiakera geratzen zaizkizu.</font>";
